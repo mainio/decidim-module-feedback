@@ -33,7 +33,52 @@ $ bundle exec rails decidim_feedback:install:migrations
 
 ## Usage
 
-TBD
+In order to trigger the feedback modals on actions, e.g. when something is
+stored, add the following to the view in that state:
+
+```erb
+<%= trigger_feedback_modal(resource, metadata: { context: "your_resource", action: "publish" }) %>
+```
+
+Give the resource model for which this feedback was left for. That resource
+should be locatable with the Decidim's resource locator. You can also trigger
+the feedback modal without a resource by giving `nil` instead of the resource
+to the modal trigger method.
+
+In the `metadata` you can specify anything you'd like to further target what
+this feedback is about. This information will be stored with the feedback and
+displayed in the feedback notification.
+
+### Who the feedback notifications are sent to?
+
+By default, all admins of the organization will receive the feedback. If you'd
+like to disable this behavior, you can add the following initializer to your
+application's initializers.
+
+```ruby
+# config/initializers/decidim_feedback.rb
+
+Decidim::Feedback.configure do |config|
+  config.notify_admins = false
+end
+```
+
+If you'd like to manually define the feedback notification emails, you can use
+the following configuration:
+
+```ruby
+# config/initializers/decidim_feedback.rb
+
+Decidim::Feedback.configure do |config|
+  config.notify_admins = false
+  config.notify_emails = ["feedback@example.org"]
+end
+```
+
+Note that if you only specify the `notify_emails` and leave the `notify_admins`
+configuration as default (`true`), the feedback notifications are sent to the
+administrators and the emails you specified in the `notify_emails`
+configuration.
 
 ## Contributing
 
