@@ -1,0 +1,79 @@
+<div class="reveal" id="<%= modal_id %>" data-reveal>
+  <div class="reveal__header">
+    <h2 class="reveal__title"><%= title %></h2>
+    <button class="close-button" data-close aria-label="<%= t("decidim.feedback.feedback_modal.close_modal") %>"
+      type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="reveal__content" id="<%= modal_id %>-content" aria-live="assertive">
+    <%= decidim_form_for(feedback_form, namespace: "feedback", url: decidim_feedback.feedbacks_path, remote: true, html: { class: "feedback-form new_feedback" }) do |f| %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= f.hidden_field :feedbackable_gid %>
+      <% f.fields_for :metadata, f.object.metadata do |mf| %>
+        <% metadata.each do |key, value| %>
+          <%= mf.hidden_field key, value: value %>
+        <% end %>
+      <% end %>
+      <div class="mb-4">
+        <div class="field rating-field">
+          <label id="<%= modal_id %>-stars-label">
+            <%= t("decidim.feedback.feedback_modal.rating_label") %>
+            <%= f.send(:required_for_attribute, :rating) %>
+          </label>
+          <%# = f.radio_button :rating, 0, label: false, class: "rating-value-initial" %>
+          <%= f.hidden_field :rating %>
+          <div class="rating-stars" role="radiogroup" aria-labelledby="<%= modal_id %>-stars-label">
+            <% [5, 4, 3, 2, 1].each do |rating| %>
+              <%= f.radio_button :rating, rating, label: false, "aria-label": I18n.t("decidim.feedback.feedback_modal.rating_value", value: rating), tabindex: 0 %>
+              <%= f.label "rating_#{rating}", rating_content(rating), class: "rating-value", "aria-hidden": true %>
+            <% end %>
+          </div>
+          <span class="form-error form-error-general" role="alert"><%= t("decidim.feedback.feedback_modal.rating_required") %></span>
+        </div>
+        <div class="field">
+          <%= f.text_area(
+            :body,
+            rows: 4,
+            maxlength: feedback_max_length,
+            required: true,
+            label: t("decidim.feedback.feedback_modal.body_label")
+          ) %>
+        </div>
+        <div class="field field-checkbox">
+          <%= f.check_box :contact_request, label: t("decidim.feedback.feedback_modal.contact_request_label") %>
+        </div>
+      </div>
+      <div class="actions text-center">
+        <%= content_tag(
+          :button,
+          t("decidim.feedback.feedback_modal.cancel"),
+          class: "link mr-2 cancel-feedback",
+          "aria-controls": "#{modal_id}-content"
+        ) %>
+        <%= f.submit t("decidim.feedback.feedback_modal.send"), class: "button primary mb-0", "aria-controls": "#{modal_id}-content" %>
+      </div>
+    <% end %>
+    <div class="feedback-success hide">
+      <div class="text-center lead">
+        <p><%= t("decidim.feedback.feedback_modal.thank_you") %></p>
+      </div>
+      <div class="actions text-center">
+        <button class="button primary" data-close><%= t("decidim.feedback.feedback_modal.close_modal") %></button>
+      </div>
+    </div>
+    <div class="cancel-confirm hide">
+      <div class="text-center">
+        <p><%= t("decidim.feedback.feedback_modal.cancel_confirm") %></p>
+      </div>
+      <div class="actions text-center">
+        <div class="mb-4">
+          <button class="link cancel-feedback-discard" aria-controls="<%= modal_id %>-content"><%= t("decidim.feedback.feedback_modal.cancel_confirm_no") %></button>
+        </div>
+        <div>
+          <button class="button primary" data-close><%= t("decidim.feedback.feedback_modal.cancel_confirm_yes") %></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

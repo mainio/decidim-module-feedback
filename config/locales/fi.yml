@@ -1,0 +1,33 @@
+fi:
+  decidim:
+    feedback:
+      feedback_mailer:
+        feedback_received:
+          contact_request: "Haluan, että minuun ollaan yhteydessä palautteestani:"
+          contact_request_answer_no: En
+          contact_request_answer_yes: Kyllä
+          feedback_body: "Palaute:"
+          feedback_metadata: "Palautteen luokittelu:"
+          feedback_rating: "Arvostelu (1-5):"
+          feedback_resource: "Palautelähde:"
+          feedback_resource_id: "ID:"
+          intro: Uusi palaute on lähetetty palvelussa %{organization_name}.
+          outro: Tämä ilmoitus on lähetetty sinulle, koska sinut on määritetty palautteen vastaanottajaksi palvelussa %{organization_name}.
+          sender_email: "Lähettäjän sähköposti:"
+          sender_name: "Lähettäjän nimi:"
+          show_resource: Näytä palautelähde
+          subject: Palaute palvelusta %{organization_name}
+      feedback_modal:
+        body_label: Kerro kokemuksestasi tarkemmin
+        cancel: En halua jättää palautetta
+        cancel_confirm: Haluatko varmasti olla jättämättä palautetta? Palautteesi on meille erittäin arvokasta ja tärkeää.
+        cancel_confirm_no: Haluan sittenkin jättää palautetta
+        cancel_confirm_yes: En halua jättää palautetta
+        close_modal: Sulje ikkuna
+        contact_request_label: Haluan, että minuun ollaan yhteydessä palautteestani
+        rating_label: Annathan palautetta kokemuksestasi
+        rating_required: Sinun on annettava arvosana
+        rating_value: Arvostele kokemus asteikolla yhdestä viiteen arvosanalla %{value}.
+        send: Lähetä palaute
+        thank_you: Kiitos palautteestasi!
+        title: Jätä palautetta kokemuksestasi

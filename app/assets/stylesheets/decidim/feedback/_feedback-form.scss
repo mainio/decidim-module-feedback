@@ -1,0 +1,72 @@
+$rating-star-color: #f5da4e !default;
+$feedback-outline-color: #007293 !default;
+$feedback-outline: 2px solid $feedback-outline-color !default;
+
+.feedback-form{
+  input[type="checkbox"]:focus{
+    outline: $feedback-outline;
+    outline-color: var(--highlight);
+  }
+
+  .rating-field{
+    margin-bottom: 2rem;
+
+    .rating-stars{
+      margin-bottom: 1rem;
+      unicode-bidi: bidi-override;
+      direction: rtl;
+      text-align: left;
+
+      &:focus{
+        outline: $feedback-outline;
+        outline-color: var(--highlight);
+      }
+
+      input{
+        // Leave the input visible for screen readers
+        position: absolute;
+        opacity: 0;
+
+        &:checked{
+          + .rating-value,
+          ~ .rating-value .rating-value-star{
+            svg{
+              fill: $rating-star-color;
+            }
+          }
+        }
+
+        &:focus{
+          + .rating-value{
+            outline: $feedback-outline;
+            outline-color: var(--highlight);
+          }
+        }
+
+        + label{
+          margin: 0;
+        }
+      }
+
+      .rating-value{
+        display: inline-block;
+
+        &:hover,
+        &:focus{
+          .rating-value-star,
+          ~ .rating-value .rating-value-star{
+            svg{
+              fill: $rating-star-color;
+            }
+          }
+        }
+
+        .rating-value-star{
+          svg{
+            fill: none;
+          }
+        }
+      }
+    }
+  }
+}

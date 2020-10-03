@@ -1,0 +1,33 @@
+sv:
+  decidim:
+    feedback:
+      feedback_mailer:
+        feedback_received:
+          contact_request: "Jag vill bli kontaktad om min feedback:"
+          contact_request_answer_no: Nej
+          contact_request_answer_yes: Ja
+          feedback_body: "Feedback:"
+          feedback_metadata: "Feedback kategorisering:"
+          feedback_rating: "Feedback betyg:"
+          feedback_resource: "Feedback källa:"
+          feedback_resource_id: "ID:"
+          intro: En ny feedback har skickats på %{organization_name}.
+          outro: Det här meddelandet skickades till dig eftersom du har identifierats som mottagare av feedback om %{organization_name}.'
+          sender_email: "Avsändarens e-post:"
+          sender_name: "Avsändarens namn:"
+          show_resource: Visa källa för feedback
+          subject: Feedback från %{organization_name}
+      feedback_modal:
+        body_label: Berätta mer om din upplevelse
+        cancel: Jag vill inte lämna feedback
+        cancel_confirm: Är du säker på att du inte vill lämna någon feedback? Din feedback är mycket värdefull och viktig för oss.
+        cancel_confirm_no: Jag ändrade mig och vill lämna feedback
+        cancel_confirm_yes: Jag vill inte lämna feedback
+        close_modal: Stäng fönstret
+        contact_request_label: Jag vill bli kontaktad om min feedback
+        rating_label: Ge feedback om din upplevelse
+        rating_required: Du måste ge ett betyg
+        rating_value: Vänligen betygsätt upplevelsen på en skala från 1 till 5 med betyget %{value}.
+        send: Skicka feedback
+        thank_you: Tack för din feedback!
+        title: Lämna feedback om din upplevelse

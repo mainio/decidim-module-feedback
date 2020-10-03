@@ -1,0 +1,53 @@
+<p><%= t(".intro", organization_name: @organization.name) %></p>
+
+<% if @sender_name.present? || @sender_email.present? %>
+  <p>
+    <% if @sender_name.present? %>
+      <strong><%= t(".sender_name") %></strong>
+      <%= @sender_name %>
+    <% end %>
+    <% if @sender_email.present? %>
+      <br>
+      <strong><%= t(".sender_email") %></strong>
+      <%= @sender_email %>
+    <% end %>
+  </p>
+<% end %>
+
+<% if @feedback_rating.present? %>
+  <p>
+    <strong><%= t(".feedback_rating") %></strong>
+    <%= @feedback_rating %>
+  </p>
+<% end %>
+
+<p><strong><%= t(".feedback_body") %></strong></p>
+<%= simple_format(@feedback_body) %>
+
+<p>
+  <strong><%= t(".contact_request") %></strong>
+  <%= @contact_answer %>
+</p>
+
+<% if @resource %>
+  <p>
+    <strong><%= t(".feedback_resource") %></strong>
+    <%= @resource_name %>
+    <br>
+    <strong><%= t(".feedback_resource_id") %></strong>
+    <%= @resource.id %>
+  </p>
+  <p><%= link_to t(".show_resource"), @resource_link %></p>
+<% end %>
+
+<% if @metadata && @metadata.any? %>
+  <p>
+    <strong><%= t(".feedback_metadata") %></strong>
+    <% @metadata.each do |key, value| %>
+      <br>
+      <%= key%>: <%= value%>
+    <% end %>
+  </p>
+<% end %>
+
+<p><%= t(".outro", organization_name: @organization.name) %></p>
