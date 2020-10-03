@@ -42,6 +42,13 @@ module ApplicationHelper
 end
 ```
 
+If you want to properly display the stars selector, add this to your
+`application.scss`:
+
+```scss
+@import "decidim/feedback/feedback-form";
+```
+
 In order to trigger the feedback modals on actions, e.g. when something is
 stored, add the following to the view in that state:
 
