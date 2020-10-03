@@ -33,6 +33,15 @@ $ bundle exec rails decidim_feedback:install:migrations
 
 ## Usage
 
+First you need to add the following to the helper which is loaded to the view
+where you want to trigger the modal:
+
+```ruby
+module ApplicationHelper
+  include Decidim::Feedback::FeedbackHelpe
+end
+```
+
 In order to trigger the feedback modals on actions, e.g. when something is
 stored, add the following to the view in that state:
 
