@@ -63,38 +63,32 @@ to the modal trigger method.
 
 In the `metadata` you can specify anything you'd like to further target what
 this feedback is about. This information will be stored with the feedback and
-displayed in the feedback notification.
+displayed in the feedback notification. This can be also used to define who
+receives this feedback.
 
-### Who the feedback notifications are sent to?
+### Where can I see the feedback?
 
-By default, all admins of the organization will receive the feedback. If you'd
-like to disable this behavior, you can add the following initializer to your
-application's initializers.
+Go to the admin panel and you'll find a new section there named "Feedback". You
+can see all the feedback here.
 
-```ruby
-# config/initializers/decidim_feedback.rb
+### Can I send the feedback to specified email addresses?
 
-Decidim::Feedback.configure do |config|
-  config.notify_admins = false
-end
-```
+You sure can. Under the "Feedback" section in the admin panel, you'll see a
+sub-section link named "Recipient groups". Go to that view to define who will
+receive the feedback notification emails.
 
-If you'd like to manually define the feedback notification emails, you can use
-the following configuration:
+Here you can define feedback recipient groups and the emails who the feedback
+will be sent to. Create a new recipient group with a name of your choise and
+define the recipient emails there. The feedback will be sent to these emails.
+The recipient group's name should be understandable by all admin users, so use a
+name that specifies either who the recipients are or what kind of feedback is
+sent to these recipients. A good name to start with is "All feedback" based on
+these suggestions.
 
-```ruby
-# config/initializers/decidim_feedback.rb
-
-Decidim::Feedback.configure do |config|
-  config.notify_admins = false
-  config.notify_emails = ["feedback@example.org"]
-end
-```
-
-Note that if you only specify the `notify_emails` and leave the `notify_admins`
-configuration as default (`true`), the feedback notifications are sent to the
-administrators and the emails you specified in the `notify_emails`
-configuration.
+In the "Restrictions" section you can define restrictions for the feedback that
+will be sent to these recipients. The restrictions will be matched against the
+feedback metadata that you defined when you triggered the feedback modal. If you
+want the group to receive all feedback, leave these undefined.
 
 ## Contributing
 
