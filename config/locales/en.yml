@@ -83,6 +83,7 @@ en:
           outro: You have received this notification because you are an administrator at %{organization_name}.
           sender_email: "Sender email:"
           sender_name: "Sender name:"
+          sent_at: "Sent at:"
           show_resource: Show feedback source
           subject: Feedback from %{organization_name}
       feedback_modal:

@@ -80,6 +80,7 @@ sv:
           outro: Det här meddelandet skickades till dig eftersom du har identifierats som mottagare av feedback om %{organization_name}.'
           sender_email: "Avsändarens e-post:"
           sender_name: "Avsändarens namn:"
+          sent_at: "Sändningstid:"
           show_resource: Visa källa för feedback
           subject: Feedback från %{organization_name}
       feedback_modal:

@@ -7,6 +7,11 @@
     </button>
   </div>
   <div class="reveal__content" id="<%= modal_id %>-content" aria-live="assertive">
+    <p>
+      <strong><%= t("decidim.feedback.feedback_mailer.feedback_received.sent_at") %></strong>
+      <br>
+      <%= l(model.created_at, format: :short) %>
+    </p>
     <% if model.user && !model.user.deleted? %>
       <p>
         <strong><%= t("decidim.feedback.feedback_mailer.feedback_received.sender_name") %></strong>

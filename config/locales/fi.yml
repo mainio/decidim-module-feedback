@@ -89,6 +89,7 @@ fi:
           outro: Tämä ilmoitus on lähetetty sinulle, koska sinut on määritetty palautteen vastaanottajaksi palvelussa %{organization_name}.
           sender_email: "Lähettäjän sähköposti:"
           sender_name: "Lähettäjän nimi:"
+          sent_at: "Lähetysaika:"
           show_resource: Näytä palautelähde
           subject: Palaute palvelusta %{organization_name}
       feedback_modal:
