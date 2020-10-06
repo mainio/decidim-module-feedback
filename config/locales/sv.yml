@@ -1,6 +1,70 @@
 sv:
   decidim:
     feedback:
+      admin:
+        actions:
+          back: Tillbaka
+          destroy: Remove
+          new_recipient_group: Ny mottagargrupp
+          show: Visa
+        feedback_info:
+          title: Feedback information
+        feedbacks:
+          index:
+            average_rating: Betygsmedelvärde
+            deleted_user: Deleted user
+            no_records_html: <p>No feedback yet.</p>
+            show_email: Visa e-postadress
+            title: Feedback
+            unknown_source: Source unknown
+        menu:
+          feedbacks: Feedback
+          recipient_groups: Mottagargrupp
+        models:
+          feedbacks:
+            fields:
+              body: Text
+              rating: Rating
+              sender: Sender
+              source: Source
+              source_id: Source ID
+          recipient_groups:
+            fields:
+              name: Name
+              metadata_conditions_count: Restriction conditions count
+              recipients_count: Number of recipients
+        recipient_groups:
+          condition:
+            condition: Condition
+            remove: Remove
+          create:
+            error: Error creating a recipient group.
+            success: Recipient group successfully created.
+          destroy:
+            success: Recipient group successfully deleted.
+          edit:
+            save: Save
+            title: Edit recipient group
+          form:
+            add_condition: Add condition
+            add_recipient: Lägg till en mottagare
+            conditions: Restrictions
+            conditions_explanation: Restrictions allows you to specify which feedback is sent to this recipient group based on the feedback metadata. If you want this group to receive all feedback leave the restrictions empty.
+            recipients: Mottagare
+          index:
+            no_records_html: <p>No recipient groups.</p><p>Start by adding a recipient group using the "<a href="%{new_set_link}">%{button_name}</a>" button.</p>
+            title: Recipient groups
+          new:
+            add: Add
+            title: Add recipient group
+          recipient:
+            recipient: Vastaanottaja
+            remove: Poista
+          update:
+            error: Error updating the recipient group.
+            success: Recipient group successfully updated.
+        titles:
+          feedbacks: Feedback
       feedback_mailer:
         feedback_received:
           contact_request: "Jag vill bli kontaktad om min feedback:"
@@ -31,3 +95,8 @@ sv:
         send: Skicka feedback
         thank_you: Tack för din feedback!
         title: Lämna feedback om din upplevelse
+  layouts:
+    decidim:
+      admin:
+        feedback:
+          title: Feedback

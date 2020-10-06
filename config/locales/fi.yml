@@ -1,6 +1,79 @@
 fi:
+  activemodel:
+    attributes:
+      feedback_condition:
+        key: Avain
+        value: Arvo
+      feedback_recipient:
+        email: Vastaanottajan sähköpostiosoite
+      feedback_recipient_group:
+        name: Nimi
   decidim:
     feedback:
+      admin:
+        actions:
+          back: Takaisin
+          destroy: Poista
+          new_recipient_group: Uusi vastaanottajaryhmä
+          show: Näytä
+        feedback_info:
+          title: Palautteen tiedot
+        feedbacks:
+          index:
+            average_rating: Arvosanojen keskiarvo
+            deleted_user: Poistettu käyttäjä
+            no_records_html: <p>Ei vielä palautteita.</p>
+            show_email: Näytä sähköpostiosoite
+            title: Palautteet
+            unknown_source: Lähde ei tiedossa
+        menu:
+          feedbacks: Palautteet
+          recipient_groups: Vastaanottajaryhmät
+        models:
+          feedbacks:
+            fields:
+              body: Teksti
+              rating: Arvosana
+              sender: Lähettäjä
+              source: Palautelähde
+              source_id: Lähteen ID
+          recipient_groups:
+            fields:
+              name: Nimi
+              metadata_conditions_count: Rajausehtojen määrä
+              recipients_count: Vastaanottajien määrä
+        recipient_groups:
+          condition:
+            condition: Ehto
+            remove: Poista
+          create:
+            error: Vastaanottajaryhmän luonti epäonnistui.
+            success: Vastaanottajaryhmän luonti onnistui.
+          destroy:
+            success: Vastaanottajaryhmän poisto onnistui.
+          edit:
+            save: Tallenna
+            title: Muokkaa vastaanottajaryhmää
+          form:
+            add_condition: Lisää ehto
+            add_recipient: Lisää vastaanottaja
+            conditions: Rajaukset
+            conditions_explanation: Rajausten avulla voit rajata, mitä palautetta lähetetään tälle vastaanottajaryhmälle palautteen metadatan perusteella. Jos haluat, että tämä ryhmä saa kaiken palautteen, älä määritä mitään rajauksia.
+            recipients: Vastaanottajat
+          index:
+            no_records_html: <p>Ei vielä vastaanottajaryhmiä.</p><p>Aloita lisäämällä vastaanottajaryhmä "<a href="%{new_set_link}">%{button_name}</a>" -napin avulla.</p>
+            title: Vastaanottajaryhmät
+          new:
+            add: Lisää
+            title: Lisää vastaanottajaryhmä
+          recipient:
+            recipient: Vastaanottaja
+            remove: Poista
+          update:
+            error: Vastaanottajaryhmän päivitys epäonnistui.
+            success: Vastaanottajaryhmän päivitys onnistui.
+        titles:
+          feedbacks: Palautteet
       feedback_mailer:
         feedback_received:
           contact_request: "Haluan, että minuun ollaan yhteydessä palautteestani:"
@@ -31,3 +104,8 @@ fi:
         send: Lähetä palaute
         thank_you: Kiitos palautteestasi!
         title: Jätä palautetta kokemuksestasi
+  layouts:
+    decidim:
+      admin:
+        feedback:
+          title: Palaute

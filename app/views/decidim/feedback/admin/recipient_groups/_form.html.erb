@@ -1,0 +1,93 @@
+<div class="card">
+  <div class="card-divider">
+    <h2 class="card-title flex--sbc">
+      <div>
+        <%= link_to t("decidim.feedback.admin.menu.recipient_groups"), recipient_groups_path %>
+        &gt;
+        <%= title %>
+      </div>
+
+      <div class="flex--cc flex-gap--1">
+        <div id="js-other-actions-wrapper">
+          <%= link_to t("actions.back", scope: "decidim.feedback.admin"), recipient_groups_path, class: "button hollow tiny button--simple" %>
+        </div>
+      </div>
+    </h2>
+  </div>
+
+  <div class="card-section">
+    <div class="row column">
+      <%= form.translated :text_field, :name, autofocus: true %>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-divider">
+    <h2 class="card-title"><%= t(".recipients") %></h2>
+  </div>
+
+  <div class="card-section">
+    <% if form.send(:error?, :recipients) %>
+      <div class="input-field">
+        <div>&nbsp;</div>
+        <%= form.send(:error_and_help_text, :recipients) %>
+      </div>
+    <% end %>
+
+    <div class="recipient-group-recipients">
+      <%= fields_for "recipients[#{blank_recipient.to_param}]", blank_recipient do |recipient_form| %>
+        <script type="text/template" class="decidim-template">
+          <%= render "recipient", form: recipient_form, tabs_id: tabs_id_for_recipient(blank_recipient) %>
+        </script>
+      <% end %>
+
+      <div class="recipient-group-recipients-list">
+        <% @form.recipients.each do |recipient| %>
+          <%= fields_for "recipients[]", recipient do |recipient_form| %>
+            <%= render "recipient", form: recipient_form, tabs_id: tabs_id_for_recipient(blank_recipient) %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <button class="button small hollow add-recipient"><%= t(".add_recipient") %></button>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-divider">
+    <h2 class="card-title"><%= t(".conditions") %></h2>
+  </div>
+
+  <div class="card-section">
+    <% if form.send(:error?, :conditions) %>
+      <div class="input-field">
+        <div>&nbsp;</div>
+        <%= form.send(:error_and_help_text, :conditions) %>
+      </div>
+    <% end %>
+
+    <p class="help-text"><%= t(".conditions_explanation") %></p>
+
+    <div class="recipient-group-conditions">
+      <%= fields_for "conditions[#{blank_condition.to_param}]", blank_condition do |condition_form| %>
+        <script type="text/template" class="decidim-template">
+          <%= render "condition", form: condition_form, tabs_id: tabs_id_for_condition(blank_condition) %>
+        </script>
+      <% end %>
+
+      <div class="recipient-group-conditions-list">
+        <% @form.conditions.each do |condition| %>
+          <%= fields_for "conditions[]", condition do |condition_form| %>
+            <%= render "condition", form: condition_form, tabs_id: tabs_id_for_condition(condition) %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <button class="button small hollow add-condition"><%= t(".add_condition") %></button>
+    </div>
+  </div>
+</div>
+
+<%= javascript_include_tag "decidim/feedback/admin/recipient_groups_form" %>

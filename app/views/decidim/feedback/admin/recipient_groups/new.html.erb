@@ -1,0 +1,7 @@
+<%= decidim_form_for(@form, url: recipient_groups_path, html: { class: "form recipient-groups-form add_recipient_group recipient_group_form_admin" }) do |f| %>
+  <%= render partial: "form", object: f, locals: { title: t(".title") } %>
+
+  <div class="button--double form-general-submit">
+    <%= f.submit t(".add") %>
+  </div>
+<% end %>

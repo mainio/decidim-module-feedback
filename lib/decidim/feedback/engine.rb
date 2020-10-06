@@ -12,7 +12,7 @@ module Decidim
         root to: "feedbacks#index"
       end
 
-      initializer "decidim_ideas.assets" do |app|
+      initializer "decidim_feedback.assets" do |app|
         app.config.assets.precompile += %w(decidim_feedback_manifest.js
                                            decidim/feedback/feedback_modal.js)
       end

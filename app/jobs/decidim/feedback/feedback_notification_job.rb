@@ -14,19 +14,21 @@ module Decidim
       private
 
       def recipient_emails(feedback)
-        (static_emails + admin_emails(feedback)).uniq
+        relevant_recipient_groups(feedback).map { |rg| rg.recipient_emails }.flatten.uniq
       end
 
-      def static_emails
-        return [] unless Decidim::Feedback.notify_emails.is_a?(Array)
-
-        Decidim::Feedback.notify_emails
-      end
-
-      def admin_emails(feedback)
-        return [] unless Decidim::Feedback.notify_admins
-
-        Decidim::User.where(organization: feedback.organization, admin: true).pluck(:email)
+      def relevant_recipient_groups(feedback)
+        Decidim::Feedback::RecipientGroup.where(organization: feedback.organization).select do |rg|
+          if rg.metadata_conditions.blank?
+            true
+          else
+            # Match all the metadata stored in the feedback object with the
+            # response group's metadata conditions.
+            rg.metadata_conditions.all? do |key, value|
+              feedback.metadata[key] == value
+            end
+          end
+        end
       end
     end
   end

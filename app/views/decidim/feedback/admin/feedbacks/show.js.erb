@@ -1,0 +1,36 @@
+(function() {
+  var modalId = "feedback-<%= @feedback.id %>";
+  var modalHtml = '<%= j((
+    cell(
+      "decidim/feedback/admin/feedback_info",
+      @feedback,
+      modal_id: "feedback-#{@feedback.id}",
+      show_email_link: allowed_to?(:show_email, :user, user: @feedback.user)
+    )
+  ).to_s.strip.html_safe) %>';
+
+  var $modal = $("#" + modalId);
+  if ($modal.length < 1) {
+    $modal = $(modalHtml);
+    $("body").append($modal);
+
+    $modal.foundation();
+
+    // Port decidim/admin/officializations.js.es6
+    var $emailModal = $("#show-email-modal");
+    const $button = $("[data-open=user_email]", $emailModal);
+    const $email = $("#user_email", $emailModal);
+    const $fullName = $("#user_full_name", $emailModal);
+
+    $("[data-toggle=show-email-modal]", $modal).on("click", function(ev) {
+      ev.preventDefault();
+
+      $button.show();
+      $button.attr("data-open-url", event.currentTarget.href);
+      $fullName.text($(event.currentTarget).data("full-name"));
+      $email.html("");
+    })
+  }
+
+  $modal.foundation("open")
+})();
