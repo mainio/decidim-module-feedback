@@ -20,6 +20,7 @@
         <table class="table-list">
           <thead>
             <tr>
+              <th><%= t("models.feedbacks.fields.sent_at", scope: "decidim.feedback.admin") %></th>
               <th><%= t("models.feedbacks.fields.sender", scope: "decidim.feedback.admin") %></th>
               <th><%= t("models.feedbacks.fields.body", scope: "decidim.feedback.admin") %></th>
               <th><%= t("models.feedbacks.fields.source", scope: "decidim.feedback.admin") %></th>
@@ -31,6 +32,7 @@
           <tbody>
             <% @feedbacks.each do |feedback| %>
               <tr>
+                <td><%= l(feedback.created_at, format: :short) %></td>
                 <td>
                   <% if feedback.user %>
                     <% if feedback.user.deleted? %>

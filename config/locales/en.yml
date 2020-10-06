@@ -29,6 +29,7 @@ en:
               body: Text
               rating: Rating
               sender: Sender
+              sent_at: Sent at
               source: Source
               source_id: Source ID
           recipient_groups:

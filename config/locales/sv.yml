@@ -26,6 +26,7 @@ sv:
               body: Text
               rating: Rating
               sender: Sender
+              sent_at: Sändningstid
               source: Source
               source_id: Source ID
           recipient_groups:

@@ -35,6 +35,7 @@ fi:
               body: Teksti
               rating: Arvosana
               sender: Lähettäjä
+              sent_at: Lähetysaika
               source: Palautelähde
               source_id: Lähteen ID
           recipient_groups:
