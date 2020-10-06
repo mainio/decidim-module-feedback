@@ -33,7 +33,10 @@ module Decidim
         {
           id: feedback.user.id,
           name: feedback.user.name,
-          profile_url: decidim.profile_url(feedback.user.nickname)
+          profile_url: decidim.profile_url(
+            feedback.user.nickname,
+            host: feedback.organization.host
+          )
         }
       end
 
