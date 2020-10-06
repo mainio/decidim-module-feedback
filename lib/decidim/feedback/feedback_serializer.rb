@@ -28,7 +28,7 @@ module Decidim
       attr_reader :feedback
 
       def serialize_user
-        return { id: nil, name: nil, profile_url: nil } if user.blank? || user.deleted?
+        return { id: nil, name: nil, profile_url: nil } if feedback.user.blank? || feedback.user.deleted?
 
         {
           id: feedback.user.id,
