@@ -96,7 +96,7 @@ en:
         contact_request_label: I want to be contacted about my feedback
         rating_label: Give feedback on your experience
         rating_required: You need to give a rating
-        rating_value: Rate your experience on a scale of from 1 to 5 with a rating of %{count}.
+        rating_value: Rate your experience on a scale of from 1 to 5 with a rating of %{value}.
         send: Send feedback
         thank_you: Thank you for your feedback!
         title: Leave feedback about your experience
