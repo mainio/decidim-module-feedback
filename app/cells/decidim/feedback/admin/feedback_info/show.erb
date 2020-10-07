@@ -1,70 +1,18 @@
 <div class="reveal" id="<%= modal_id %>" data-reveal>
   <div class="reveal__header">
-    <h2 class="reveal__title"><%= t("decidim.feedback.admin.feedback_info.title") %></h2>
-    <button class="close-button" data-close aria-label="<%= t("decidim.feedback.feedback_modal.close_modal") %>"
+    <h2 class="reveal__title"><%= t(".title") %></h2>
+    <button class="close-button" data-close aria-label="<%= t(".close_modal") %>"
       type="button">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="reveal__content" id="<%= modal_id %>-content" aria-live="assertive">
-    <p>
-      <strong><%= t("decidim.feedback.feedback_mailer.feedback_received.sent_at") %></strong>
-      <br>
-      <%= l(model.created_at, format: :short) %>
-    </p>
-    <% if model.user && !model.user.deleted? %>
-      <p>
-        <strong><%= t("decidim.feedback.feedback_mailer.feedback_received.sender_name") %></strong>
-        <br>
-        <%= model.user.name %> (ID: <%= model.user.id %>)
-        <% if show_email_link? %>
-          <%= icon_link_to(
-            "envelope-open",
-            decidim_admin.show_email_officialization_path(user_id: model.user.id),
-            t("decidim.feedback.admin.feedbacks.index.show_email"),
-            class: "action-icon action-icon--show-email",
-            data: { full_name: model.user.name, toggle: "show-email-modal" }
-          ) %>
-        <% end %>
-      </p>
-    <% end %>
-    <p>
-      <strong><%= t("decidim.feedback.feedback_mailer.feedback_received.feedback_rating") %></strong>
-      <br>
-      <%= model.rating %>
-    </p>
-    <div>
-      <strong><%= t("decidim.feedback.feedback_mailer.feedback_received.feedback_body") %></strong>
-    </div>
-    <%= simple_format(model.body) %>
-    <p>
-      <strong><%= t("decidim.feedback.feedback_mailer.feedback_received.contact_request") %></strong>
-      <br>
-      <% if model.contact_request? %>
-        <%= t("decidim.feedback.feedback_mailer.feedback_received.contact_request_answer_yes") %>
-      <% else %>
-        <%= t("decidim.feedback.feedback_mailer.feedback_received.contact_request_answer_no") %>
-      <% end %>
-    </p>
-    <% if model.feedbackable %>
-      <p>
-        <strong><%= t("decidim.feedback.feedback_mailer.feedback_received.feedback_resource") %></strong>
-        <br>
-        <%= model.feedbackable.class.model_name.human(count: 2) %>
-        (<%= t("decidim.feedback.feedback_mailer.feedback_received.feedback_resource_id") %>
-        <%= model.feedbackable.id %>)
-      </p>
-      <p><%= link_to t("decidim.feedback.feedback_mailer.feedback_received.show_resource"), resource_link, target: "_blank" %></p>
-    <% end %>
-    <% if model.metadata && model.metadata.any? %>
-      <p>
-        <strong><%= t("decidim.feedback.feedback_mailer.feedback_received.feedback_metadata") %></strong>
-        <% model.metadata.each do |key, value| %>
-          <br>
-          <%= key%>: <%= value%>
-        <% end %>
-        <br>
-      </p>
-    <% end %>
+    <%== cell(
+      "decidim/feedback/feedback_details",
+      model,
+      show_email: false,
+      show_email_link: show_email_link?,
+      show_contact: show_contact?
+    ) %>
   </div>
 </div>

@@ -8,6 +8,7 @@ sv:
           new_recipient_group: Ny mottagargrupp
           show: Visa
         feedback_info:
+          close_modal: Stäng fönstret
           title: Feedback information
         feedbacks:
           index:
@@ -16,6 +17,7 @@ sv:
             no_records_html: <p>No feedback yet.</p>
             show_email: Visa e-postadress
             title: Feedback
+            total_amount: Total feedback
             unknown_source: Source unknown
         menu:
           feedbacks: Feedback
@@ -66,23 +68,25 @@ sv:
             success: Recipient group successfully updated.
         titles:
           feedbacks: Feedback
+      feedback_details:
+        contact_request: Jag vill bli kontaktad om min feedback
+        contact_request_answer_no: Nej
+        contact_request_answer_yes: Ja
+        feedback_body: Feedback
+        feedback_metadata: Feedback kategorisering
+        feedback_rating: Feedback betyg
+        feedback_resource: Feedback källa
+        feedback_resource_id: ID
+        sender_email: Avsändarens e-post
+        sender_name: Avsändarens namn
+        sent_at: Sändningstid
+        show_email: Visa e-postadress
+        show_resource: Visa källa för feedback
       feedback_mailer:
         feedback_received:
-          contact_request: "Jag vill bli kontaktad om min feedback:"
-          contact_request_answer_no: Nej
-          contact_request_answer_yes: Ja
-          feedback_body: "Feedback:"
-          feedback_metadata: "Feedback kategorisering:"
-          feedback_rating: "Feedback betyg:"
-          feedback_resource: "Feedback källa:"
-          feedback_resource_id: "ID:"
-          intro: En ny feedback har skickats på %{organization_name}.
-          outro: Det här meddelandet skickades till dig eftersom du har identifierats som mottagare av feedback om %{organization_name}.'
-          sender_email: "Avsändarens e-post:"
-          sender_name: "Avsändarens namn:"
-          sent_at: "Sändningstid:"
-          show_resource: Visa källa för feedback
-          subject: Feedback från %{organization_name}
+        intro: En ny feedback har skickats på %{organization_name}.
+        outro: Det här meddelandet skickades till dig eftersom du har identifierats som mottagare av feedback om %{organization_name}.'
+        subject: Feedback från %{organization_name}
       feedback_modal:
         body_label: Berätta mer om din upplevelse
         cancel: Jag vill inte lämna feedback

@@ -5,7 +5,8 @@
       "decidim/feedback/admin/feedback_info",
       @feedback,
       modal_id: "feedback-#{@feedback.id}",
-      show_email_link: allowed_to?(:show_email, :user, user: @feedback.user)
+      show_email_link: allowed_to?(:show_email, :user, user: @feedback.user),
+      show_contact: true
     )
   ).to_s.strip.html_safe) %>';
 

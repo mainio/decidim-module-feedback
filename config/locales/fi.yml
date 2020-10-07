@@ -17,6 +17,7 @@ fi:
           new_recipient_group: Uusi vastaanottajaryhmä
           show: Näytä
         feedback_info:
+          close_modal: Sulje ikkuna
           title: Palautteen tiedot
         feedbacks:
           index:
@@ -25,6 +26,7 @@ fi:
             no_records_html: <p>Ei vielä palautteita.</p>
             show_email: Näytä sähköpostiosoite
             title: Palautteet
+            total_amount: Palautteita yhteensä
             unknown_source: Lähde ei tiedossa
         menu:
           feedbacks: Palautteet
@@ -75,22 +77,24 @@ fi:
             success: Vastaanottajaryhmän päivitys onnistui.
         titles:
           feedbacks: Palautteet
+      feedback_details:
+        contact_request: Haluan, että minuun ollaan yhteydessä palautteestani
+        contact_request_answer_no: En
+        contact_request_answer_yes: Kyllä
+        feedback_body: Palaute
+        feedback_metadata: Palautteen luokittelu
+        feedback_rating: Arvostelu (1-5)
+        feedback_resource: Palautelähde
+        feedback_resource_id: ID
+        sender_email: Lähettäjän sähköposti
+        sender_name: Lähettäjän nimi
+        sent_at: Lähetysaika
+        show_email: Näytä sähköpostiosoite
+        show_resource: Näytä palautelähde
       feedback_mailer:
         feedback_received:
-          contact_request: "Haluan, että minuun ollaan yhteydessä palautteestani:"
-          contact_request_answer_no: En
-          contact_request_answer_yes: Kyllä
-          feedback_body: "Palaute:"
-          feedback_metadata: "Palautteen luokittelu:"
-          feedback_rating: "Arvostelu (1-5):"
-          feedback_resource: "Palautelähde:"
-          feedback_resource_id: "ID:"
           intro: Uusi palaute on lähetetty palvelussa %{organization_name}.
           outro: Tämä ilmoitus on lähetetty sinulle, koska sinut on määritetty palautteen vastaanottajaksi palvelussa %{organization_name}.
-          sender_email: "Lähettäjän sähköposti:"
-          sender_name: "Lähettäjän nimi:"
-          sent_at: "Lähetysaika:"
-          show_resource: Näytä palautelähde
           subject: Palaute palvelusta %{organization_name}
       feedback_modal:
         body_label: Kerro kokemuksestasi tarkemmin

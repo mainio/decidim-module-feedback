@@ -7,37 +7,36 @@ module Decidim
     class FeedbackMailer < Decidim::ApplicationMailer
       helper Decidim::ResourceHelper
 
+      helper_method :cell
+
       def feedback_received(feedback, recipient_email)
         i18n_scope = "decidim.feedback.feedback_mailer.feedback_received"
 
-        @sender_name = feedback.user&.name
-        @sender_email = feedback.user&.email
-        @feedback_body = feedback.body
-        @feedback_rating = feedback.rating
-        @metadata = feedback.metadata
+        @feedback = feedback
         @organization = feedback.organization
-
-        wants_contact = feedback.contact_request? ? "yes" : "no"
+        sender_email = feedback.user&.email
 
         I18n.with_locale(@organization.default_locale) do
-          @contact_answer = I18n.t(
-            "contact_request_answer_#{wants_contact}",
-            scope: i18n_scope
-          )
-
-          @resource = feedback.feedbackable
-          if @resource
-            @resource_name = @resource.class.model_name.human(count: 2)
-            @resource_link = Decidim::ResourceLocatorPresenter.new(@resource).url
-          end
-
           subject = I18n.t("subject", organization_name: @organization.name, scope: i18n_scope)
           mail(
             to: recipient_email,
-            reply_to: @sender_email.blank? ? nil : @sender_email,
+            reply_to: sender_email.blank? ? nil : sender_email,
             subject: subject
           )
         end
+      end
+
+      private
+
+      def cell(template, model, options)
+        ::Decidim::ViewModel.cell(
+          template,
+          model,
+          options.merge(
+            organization: @organization,
+            context: { controller: self }
+          )
+        )
       end
     end
   end

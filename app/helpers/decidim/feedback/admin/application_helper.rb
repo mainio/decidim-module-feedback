@@ -6,6 +6,8 @@ module Decidim
       # Custom helpers, scoped to the feedback admin engine.
       #
       module ApplicationHelper
+        include Decidim::Messaging::ConversationHelper
+
         def tabs_id_for_recipient(recipient)
           "recipient_group_recipient_#{recipient.to_param}"
         end

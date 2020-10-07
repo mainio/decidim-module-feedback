@@ -1,0 +1,70 @@
+<p>
+  <strong><%= t(".sent_at") %>:</strong>
+  <br>
+  <%= l(model.created_at, format: :short) %>
+</p>
+<% if model.user && !model.user.deleted? %>
+  <p>
+    <strong><%= t(".sender_name") %>:</strong>
+    <br>
+    <%= model.user.name %> (ID: <%= model.user.id %>)
+    <% if show_email_link? %>
+      <%= icon_link_to(
+        "envelope-open",
+        decidim_admin.show_email_officialization_path(user_id: model.user.id),
+        t(".show_email"),
+        class: "action-icon action-icon--show-email",
+        data: { full_name: model.user.name, toggle: "show-email-modal" }
+      ) %>
+    <% end %>
+    <% if show_contact? && show_contact_link? %>
+      <br>
+      <%= link_to t("decidim.contact"), current_or_new_conversation_path_with(model.user), target: "_blank" %>
+    <% end %>
+  </p>
+  <% if show_email? %>
+    <p>
+      <strong><%= t(".sender_email") %>:</strong>
+      <br>
+      <%= model.user.email %>
+    </p>
+  <% end %>
+<% end %>
+<p>
+  <strong><%= t(".feedback_rating") %>:</strong>
+  <br>
+  <%= model.rating %>
+</p>
+<div>
+  <strong><%= t(".feedback_body") %>:</strong>
+</div>
+<%= simple_format(model.body) %>
+<p>
+  <strong><%= t(".contact_request") %>:</strong>
+  <br>
+  <% if model.contact_request? %>
+    <%= t(".contact_request_answer_yes") %>
+  <% else %>
+    <%= t(".contact_request_answer_no") %>
+  <% end %>
+</p>
+<% if model.feedbackable %>
+  <p>
+    <strong><%= t(".feedback_resource") %>:</strong>
+    <br>
+    <%= model.feedbackable.class.model_name.human(count: 2) %>
+    (<%= t(".feedback_resource_id") %>
+    <%= model.feedbackable.id %>)
+  </p>
+  <p><%= link_to t(".show_resource"), resource_link, target: "_blank" %></p>
+<% end %>
+<% if model.metadata && model.metadata.any? %>
+  <p>
+    <strong><%= t(".feedback_metadata") %>:</strong>
+    <% model.metadata.each do |key, value| %>
+      <br>
+      <%= key%>: <%= value%>
+    <% end %>
+    <br>
+  </p>
+<% end %>

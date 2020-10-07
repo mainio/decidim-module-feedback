@@ -8,6 +8,7 @@ en:
           new_recipient_group: New recipient group
           show: Show
         feedback_info:
+          close_modal: Close window
           title: Feedback information
         feedbacks:
           index:
@@ -16,6 +17,7 @@ en:
             no_records_html: <p>No feedback yet.</p>
             show_email: Show email address
             title: Feedback
+            total_amount: Total feedback
             unknown_source: Source unknown
           show:
             deleted_user: Deleted user
@@ -69,22 +71,24 @@ en:
             success: Recipient group successfully updated.
         titles:
           feedbacks: Feedbacks
+      feedback_details:
+        contact_request: I want to be contacted about my feedback
+        contact_request_answer_no: "No"
+        contact_request_answer_yes: "Yes"
+        feedback_body: Feedback
+        feedback_metadata: "Feedback categorization"
+        feedback_rating: Rating (1-5)
+        feedback_resource: Feedback source
+        feedback_resource_id: ID
+        sender_email: Sender email
+        sender_name: Sender name
+        sent_at: Sent at
+        show_email: Show email address
+        show_resource: Show feedback source
       feedback_mailer:
         feedback_received:
-          contact_request: "I want to be contacted about my feedback:"
-          contact_request_answer_no: "No"
-          contact_request_answer_yes: "Yes"
-          feedback_body: "Feedback:"
-          feedback_metadata: "Feedback categorization:"
-          feedback_rating: "Rating (1-5):"
-          feedback_resource: "Feedback source:"
-          feedback_resource_id: "ID:"
           intro: A new feedback has been sent at %{organization_name}.
           outro: You have received this notification because you are an administrator at %{organization_name}.
-          sender_email: "Sender email:"
-          sender_name: "Sender name:"
-          sent_at: "Sent at:"
-          show_resource: Show feedback source
           subject: Feedback from %{organization_name}
       feedback_modal:
         body_label: Tell us more about your experience
