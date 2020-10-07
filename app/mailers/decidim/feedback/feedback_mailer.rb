@@ -18,20 +18,20 @@ module Decidim
         @organization = feedback.organization
 
         wants_contact = feedback.contact_request? ? "yes" : "no"
-        @contact_answer = I18n.t(
-          "contact_request_answer_#{wants_contact}",
-          scope: i18n_scope
-        )
-
-        @resource = feedback.feedbackable
-        if @resource
-          @resource_name = @resource.class.model_name.human(count: 2)
-          @resource_link = Decidim::ResourceLocatorPresenter.new(@resource).url
-        end
-
-        subject = I18n.t("subject", organization_name: @organization.name, scope: i18n_scope)
 
         I18n.with_locale(@organization.default_locale) do
+          @contact_answer = I18n.t(
+            "contact_request_answer_#{wants_contact}",
+            scope: i18n_scope
+          )
+
+          @resource = feedback.feedbackable
+          if @resource
+            @resource_name = @resource.class.model_name.human(count: 2)
+            @resource_link = Decidim::ResourceLocatorPresenter.new(@resource).url
+          end
+
+          subject = I18n.t("subject", organization_name: @organization.name, scope: i18n_scope)
           mail(
             to: recipient_email,
             reply_to: @sender_email.blank? ? nil : @sender_email,
