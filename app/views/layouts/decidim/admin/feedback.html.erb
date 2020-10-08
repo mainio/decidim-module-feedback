@@ -5,7 +5,7 @@
     </div>
     <ul>
       <% if allowed_to? :read, :feedback %>
-        <li <% if is_active_link?(decidim_feedback_admin.feedbacks_path) %> class="is-active" <% end %>>
+        <li <% if is_active_link?(decidim_feedback_admin.feedbacks_path, %r{^#{decidim_feedback_admin.feedbacks_path}(\?.*)?$}) %> class="is-active" <% end %>>
           <%= link_to t("menu.feedbacks", scope: "decidim.feedback.admin"), decidim_feedback_admin.feedbacks_path %>
         </li>
       <% end %>
