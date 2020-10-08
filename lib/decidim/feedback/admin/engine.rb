@@ -13,10 +13,10 @@ module Decidim
           resources :feedbacks, only: [:index, :show] do
             collection do
               post :export
+
+              resources :recipient_groups, except: [:show]
             end
           end
-
-          resources :recipient_groups, except: [:show]
 
           root to: "feedbacks#index"
         end
