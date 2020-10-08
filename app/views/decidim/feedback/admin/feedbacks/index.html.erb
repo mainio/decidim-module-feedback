@@ -26,6 +26,7 @@
               <th><%= t("models.feedbacks.fields.source", scope: "decidim.feedback.admin") %></th>
               <th><%= t("models.feedbacks.fields.source_id", scope: "decidim.feedback.admin") %></th>
               <th><%= t("models.feedbacks.fields.rating", scope: "decidim.feedback.admin") %></th>
+              <th><%= t("models.feedbacks.fields.contact_request", scope: "decidim.feedback.admin") %></th>
               <th></th>
             </tr>
           </thead>
@@ -61,6 +62,7 @@
                   <td></td>
                 <% end %>
                 <td><%= feedback.rating %></td>
+                <td><%= feedback.contact_request_human %></td>
                 <td class="table-list__actions">
                   <% if allowed_to? :read, :feedback %>
                     <%= icon_link_to "eye", feedback_path(feedback), t("actions.show", scope: "decidim.feedback.admin"), class: "action-icon--show", data: { remote: true } %>

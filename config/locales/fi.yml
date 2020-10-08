@@ -35,11 +35,16 @@ fi:
           feedbacks:
             fields:
               body: Teksti
+              contact_request: Yhteydenottopyyntö
               rating: Arvosana
               sender: Lähettäjä
               sent_at: Lähetysaika
               source: Palautelähde
               source_id: Lähteen ID
+            values:
+              contact_request:
+                "yes": Kyllä
+                "no": Ei
           recipient_groups:
             fields:
               name: Nimi

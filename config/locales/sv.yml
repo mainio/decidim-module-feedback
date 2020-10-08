@@ -26,11 +26,16 @@ sv:
           feedbacks:
             fields:
               body: Text
+              contact_request: Kontaktförfrågan
               rating: Rating
               sender: Sender
               sent_at: Sändningstid
               source: Source
               source_id: Source ID
+            values:
+              contact_request:
+                "yes": "Ja"
+                "no": "Nej"
           recipient_groups:
             fields:
               name: Name

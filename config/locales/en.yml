@@ -29,11 +29,16 @@ en:
           feedbacks:
             fields:
               body: Text
+              contact_request: Contact request
               rating: Rating
               sender: Sender
               sent_at: Sent at
               source: Source
               source_id: Source ID
+            values:
+              contact_request:
+                "yes": "Yes"
+                "no": "No"
           recipient_groups:
             fields:
               name: Name
