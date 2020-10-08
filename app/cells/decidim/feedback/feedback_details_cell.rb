@@ -38,10 +38,25 @@ module Decidim
         @resource_link ||= Decidim::ResourceLocatorPresenter.new(model.feedbackable).url
       end
 
-      def presented_user
-        return unless model.user
+      def conversation_link
+        return unless sender
 
-        @presented_user ||= present(model.user)
+        # Note that this can be nil in case the user does not want to be
+        # contacted on the platform through their profile settings.
+        @conversation_link ||= current_or_new_conversation_path_with(sender)
+      end
+
+      def presented_user
+        return unless sender
+
+        @presented_user ||= present(sender)
+      end
+
+      def sender
+        return unless model.user
+        return if model.user.deleted?
+
+        model.user
       end
 
       def decidim_admin

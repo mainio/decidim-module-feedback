@@ -91,6 +91,7 @@ fi:
         sent_at: Lähetysaika
         show_email: Näytä sähköpostiosoite
         show_resource: Näytä palautelähde
+        user_conversations_rejected: Käyttäjä ei halua yhteydenottoja alustalla.
       feedback_mailer:
         feedback_received:
           intro: Uusi palaute on lähetetty palvelussa %{organization_name}.

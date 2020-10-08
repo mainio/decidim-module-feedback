@@ -19,7 +19,11 @@
     <% end %>
     <% if show_contact? && show_contact_link? %>
       <br>
-      <%= link_to t("decidim.contact"), current_or_new_conversation_path_with(model.user), target: "_blank" %>
+      <% if conversation_link %>
+        <%= link_to t("decidim.contact"), conversation_link, target: "_blank" %>
+      <% else %>
+        <%= t(".user_conversations_rejected") %>
+      <% end %>
     <% end %>
   </p>
   <% if show_email? %>

@@ -82,6 +82,7 @@ sv:
         sent_at: Sändningstid
         show_email: Visa e-postadress
         show_resource: Visa källa för feedback
+        user_conversations_rejected: Användaren vill inte kontaktas på plattformen.
       feedback_mailer:
         feedback_received:
         intro: En ny feedback har skickats på %{organization_name}.
