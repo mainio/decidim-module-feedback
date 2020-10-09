@@ -57,7 +57,7 @@
     <strong><%= t(".feedback_resource") %>:</strong>
     <br>
     <%= model.feedbackable.class.model_name.human(count: 2) %>
-    (<%= t(".feedback_resource_id") %>
+    (<%= t(".feedback_resource_id") %>:
     <%= model.feedbackable.id %>)
   </p>
   <p><%= link_to t(".show_resource"), resource_link, target: "_blank" %></p>
