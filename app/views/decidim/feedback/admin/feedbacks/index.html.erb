@@ -83,8 +83,8 @@
   </div>
   <div class="card-divider">
     <strong><%= t ".total_amount" %>:&nbsp;</strong><span><%= @collection.count %></span>
-    <span>&nbsp;|&nbsp;</span>
     <% if average_rating %>
+      <span>&nbsp;|&nbsp;</span>
       <strong><%= t ".average_rating" %>:&nbsp;</strong><span><%= number_with_precision(average_rating, precision: 2) %></span>
     <% end %>
   </div>
