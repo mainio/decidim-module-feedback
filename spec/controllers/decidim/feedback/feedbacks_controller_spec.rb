@@ -4,7 +4,7 @@ require "spec_helper"
 
 module Decidim
   module Feedback
-    describe FeedbackController, type: :controller do
+    describe FeedbacksController, type: :controller do
       let(:organization) { create(:organization) }
       let(:user) { create(:user, :confirmed, organization: organization) }
 

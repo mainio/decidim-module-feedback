@@ -1,6 +1,6 @@
 # Decidim::Feedback
 
-[![Build Status](https://travis-ci.com/mainio/decidim-module-feedback.svg?branch=master)](https://travis-ci.com/mainio/decidim-module-feedback)
+[![Build Status](https://github.com/mainio/decidim-module-feedback/actions/workflows/ci_feedback.yml/badge.svg)](https://github.com/mainio/decidim-module-feedback/actions)
 [![codecov](https://codecov.io/gh/mainio/decidim-module-feedback/branch/master/graph/badge.svg)](https://codecov.io/gh/mainio/decidim-module-feedback)
 
 The gem has been developed by [Mainio Tech](https://www.mainiotech.fi/).
@@ -38,7 +38,7 @@ where you want to trigger the modal:
 
 ```ruby
 module ApplicationHelper
-  include Decidim::Feedback::FeedbackHelpe
+  include Decidim::Feedback::FeedbackHelper
 end
 ```
 

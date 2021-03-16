@@ -1,4 +1,13 @@
 sv:
+  activemodel:
+    attributes:
+      feedback_condition:
+        key: Key
+        value: Value
+      feedback_recipient:
+        email: Recipient email address
+      feedback_recipient_group:
+        name: Name
   decidim:
     feedback:
       admin:

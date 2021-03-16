@@ -10,14 +10,15 @@ base_path = ""
 base_path = "../" if File.basename(__dir__) == "development_app"
 require_relative "#{base_path}lib/decidim/feedback/version"
 
-#DECIDIM_VERSION = Decidim::Feedback::DECIDIM_VERSION
-DECIDIM_VERSION = { github: "decidim/decidim", branch: "develop" }
+# DECIDIM_VERSION = Decidim::Feedback::DECIDIM_VERSION
+# DECIDIM_VERSION = { github: "decidim/decidim", branch: "develop" }
+DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.24-stable" }.freeze
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-feedback", path: "."
 
 gem "bootsnap", "~> 1.4"
-gem "puma", "~> 4.3.3"
+gem "puma", ">= 5.0.0"
 gem "uglifier", "~> 4.1"
 
 group :development, :test do
@@ -27,7 +28,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "faker", "~> 1.9"
+  gem "faker", "~> 2.14"
   gem "letter_opener_web", "~> 1.3"
   gem "listen", "~> 3.1"
   gem "spring", "~> 2.0"
