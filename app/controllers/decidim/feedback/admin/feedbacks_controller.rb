@@ -4,11 +4,12 @@ module Decidim
   module Feedback
     module Admin
       class FeedbacksController < Decidim::Feedback::Admin::ApplicationController
+        include Decidim::ApplicationHelper
         include Paginable
 
         layout "decidim/admin/feedback"
 
-        helper_method :feedback, :average_rating
+        helper_method :feedback, :average_rating, :present
 
         def index
           enforce_permission_to :read, :feedback

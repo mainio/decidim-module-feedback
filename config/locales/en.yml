@@ -52,7 +52,7 @@ en:
             fields:
               name: Name
               metadata_conditions_count: Restriction conditions count
-              recipient_count: Number of recipients
+              recipients_count: Number of recipients
         recipient_groups:
           condition:
             condition: Condition
