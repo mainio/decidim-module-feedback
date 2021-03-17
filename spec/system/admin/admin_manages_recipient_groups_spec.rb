@@ -49,4 +49,48 @@ describe "Admin manages recipient groups", type: :system do
       expect(saved_recipient_group.metadata_conditions[condition_key]).to eq(condition_value)
     end
   end
+
+  context "when there is recipient groups" do
+    let(:group_amount) { rand(1..6) }
+    let!(:recipient_groups) { create_list(:recipient_group, group_amount, organization: organization) }
+
+    before do
+      visit current_path
+    end
+
+    describe "#index" do
+      it "shows names of recipient groups" do
+        recipient_groups.each do |recipient_group|
+          expect(page).to have_content(recipient_group.name["en"])
+        end
+      end
+    end
+
+    describe "#edit" do
+      before do
+        find(:css, ".action-icon.action-icon--new", match: :first).click
+      end
+
+      it "can edit group name" do
+        fill_in "feedback_recipient_group_name_en", with: "Foo bar"
+        click_button "Save"
+        expect(page).to have_content("Recipient group successfully updated")
+        expect(page).to have_content("Foo bar")
+      end
+    end
+
+    describe "#delete" do
+      it "reveals confirmation" do
+        find(:css, ".action-icon.action-icon--remove", match: :first).click
+        expect(page).to have_content("Confirm delete")
+      end
+
+      it "deletes recipient group" do
+        find(:css, ".action-icon.action-icon--remove", match: :first).click
+        expect(page).to have_content("Confirm delete")
+        click_link "OK"
+        expect(page).to have_content("Recipient group successfully deleted")
+      end
+    end
+  end
 end
