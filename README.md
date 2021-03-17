@@ -38,7 +38,7 @@ where you want to trigger the modal:
 
 ```ruby
 module ApplicationHelper
-  include Decidim::Feedback::FeedbackHelpe
+  include Decidim::Feedback::FeedbackHelper
 end
 ```
 
