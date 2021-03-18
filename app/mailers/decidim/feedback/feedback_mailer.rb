@@ -14,13 +14,13 @@ module Decidim
 
         @feedback = feedback
         @organization = feedback.organization
-        sender_email = feedback.user&.email
+        sender_email = feedback.contact_request ? feedback.user&.email : nil
 
         I18n.with_locale(@organization.default_locale) do
           subject = I18n.t("subject", organization_name: @organization.name, scope: i18n_scope)
           mail(
             to: recipient_email,
-            reply_to: sender_email.blank? ? nil : sender_email,
+            reply_to: sender_email.presence,
             subject: subject
           )
         end
