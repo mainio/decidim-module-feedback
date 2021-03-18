@@ -75,6 +75,6 @@ end
 
 Decidim::Feedback::FeedbackModalCell.class_eval do
   define_method :form_authenticity_token do
-    "abcdefghijklmn"
+    SecureRandom.hex(8)
   end
 end

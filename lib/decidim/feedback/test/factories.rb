@@ -16,6 +16,14 @@ FactoryBot.define do
     contact_request { rand(2) == 1 }
     metadata { { "#{::Faker::Verb.base}": ::Faker::Verb.base.to_s, "#{::Faker::Verb.base}": ::Faker::Verb.base.to_s } }
     feedbackable { create(:dummy_resource, component: create(:dummy_component, organization: organization)) }
+
+    trait :contact do
+      contact_request { true }
+    end
+
+    trait :no_contact do
+      contact_request { false }
+    end
   end
 
   factory :recipient_group, class: "Decidim::Feedback::RecipientGroup" do
