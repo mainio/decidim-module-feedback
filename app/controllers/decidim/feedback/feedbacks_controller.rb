@@ -5,6 +5,7 @@ module Decidim
     class FeedbacksController < Decidim::ApplicationController
       include Decidim::FormFactory
 
+      # TODO: before_action -> Ensure JS format
       before_action :authenticate_user!
 
       skip_before_action :store_current_location

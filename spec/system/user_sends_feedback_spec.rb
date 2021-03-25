@@ -21,6 +21,7 @@ describe "User sends feedback", type: :system do
           <title>Feedback Modal Test</title>
           #{stylesheet_link_tag "application"}
           #{javascript_include_tag "application"}
+          #{javascript_include_tag "decidim/feedback/feedback_modal"}
         </head>
         <body>
           #{document_inner}
@@ -41,7 +42,6 @@ describe "User sends feedback", type: :system do
   before do
     switch_to_host(organization.host)
     final_html = html_document
-    # ActionController::Base.allow_forgery_protection = true
     Rails.application.routes.draw do
       mount Decidim::Feedback::Engine => "/"
       get "test_feedback_cell", to: ->(_) { [200, {}, [final_html]] }
@@ -51,7 +51,6 @@ describe "User sends feedback", type: :system do
   end
 
   after do
-    # ActionController::Base.allow_forgery_protection = false
     Rails.application.reload_routes!
   end
 
@@ -59,6 +58,7 @@ describe "User sends feedback", type: :system do
     visit "/test_feedback_cell"
     page.execute_script('$("#feedback-modal").foundation("open")')
     expect_no_js_errors
+    expect(page).to have_content("Leave feedback about your experience")
 
     find("#feedback_feedback_rating_3").click
 
@@ -66,15 +66,14 @@ describe "User sends feedback", type: :system do
       fill_in with: "Very nice comment"
     end
 
-    expect(page).to have_content("Leave feedback about your experience")
-    # allow(Decidim::Feedback::FeedbacksController).to receive(:create).and_return("<div>Thank you for the feedback")
-    # click_button "Send feedback"
-    # expect(page).to have_content("Thank you for your feedback")
+    click_button "Send feedback"
+    expect(page).to have_content("Thank you for your feedback")
   end
 end
 
 Decidim::Feedback::FeedbackModalCell.class_eval do
   define_method :form_authenticity_token do
+    # Just generate random string in test
     SecureRandom.hex(8)
   end
 end
