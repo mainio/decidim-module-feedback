@@ -34,8 +34,8 @@ module Decidim
         )
       end
 
-      def rating_content(rating)
-        content_tag(:span, class: "rating-value-star") do
+      def rating_content(_rating)
+        tag(:span, class: "rating-value-star") do
           render :star_icon
         end
       end

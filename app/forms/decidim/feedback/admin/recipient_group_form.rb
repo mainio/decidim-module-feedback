@@ -26,11 +26,11 @@ module Decidim
         end
 
         def recipient_emails
-          @recipient_emails ||= recipients.select { |r| !r.deleted }.map { |r| r.email }.uniq
+          @recipient_emails ||= recipients.reject(&:deleted).map(&:email).uniq
         end
 
         def metadata_conditions
-          @metadata_conditions ||= conditions.select { |c| !c.deleted }.map { |c| [c.key, c.value] }.to_h
+          @metadata_conditions ||= conditions.reject(&:deleted).map { |c| [c.key, c.value] }.to_h
         end
       end
     end

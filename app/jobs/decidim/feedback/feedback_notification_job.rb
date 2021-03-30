@@ -14,7 +14,7 @@ module Decidim
       private
 
       def recipient_emails(feedback)
-        relevant_recipient_groups(feedback).map { |rg| rg.recipient_emails }.flatten.uniq
+        relevant_recipient_groups(feedback).map(&:recipient_emails).flatten.uniq
       end
 
       def relevant_recipient_groups(feedback)
