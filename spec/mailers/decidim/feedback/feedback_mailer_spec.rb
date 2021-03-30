@@ -24,14 +24,14 @@ module Decidim::Feedback
 
         it "has senders email" do
           # Waiting for a fix to decidim core
-          # expect(mail.reply_to).to eq(feedback.user.email)
+          # expect(mail.reply_to).to eq([feedback.user.email])
         end
       end
 
       context "when sender doesnt want to be contacted" do
         let(:feedback) { create(:feedback, :no_contact, organization: organization) }
 
-        it "has senders email" do
+        it "doesnt have reply_to email" do
           # Waiting for a fix to decidim core
           # expect(mail.reply_to).to eq(nil)
         end

@@ -8,7 +8,7 @@ describe Decidim::Feedback::Admin::FeedbacksController, type: :controller do
   let(:organization) { create(:organization) }
   let(:user) { create(:user, :admin, :confirmed, organization: organization) }
   let(:resource) { create(:dummy_resource) }
-  let(:params) { { favoritable_gid: dummy_resource.to_sgid.to_s } }
+  let(:params) { { favoritable_gid: resource.to_sgid.to_s } }
 
   before do
     request.env["decidim.current_organization"] = user.organization
@@ -36,13 +36,13 @@ describe Decidim::Feedback::Admin::FeedbacksController, type: :controller do
   end
 
   describe "POST export" do
-    let(:export_format) { "csv" }
+    let(:export_format) { "CSV" }
 
     it "creates job" do
-      expect(Decidim::ExportJob).to receive(:perform_later)
+      expect(Decidim::Feedback::Admin::ExportJob).to receive(:perform_later)
         .with(user, organization, "feedbacks", export_format)
 
-      post :export, params: { format: export_format }
+      post :export, params: params.merge(format: export_format)
     end
   end
 end
