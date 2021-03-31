@@ -10,6 +10,7 @@ describe "User sends feedback", type: :system do
   end
   let(:resource) { create(:dummy_resource, component: component) }
   let(:component) { create(:dummy_component, organization: organization) }
+  let(:rating) { rand(1..5) }
   let(:html_head) { "" }
   let(:html_document) do
     document_inner = html_body
@@ -60,14 +61,18 @@ describe "User sends feedback", type: :system do
     expect_no_js_errors
     expect(page).to have_content("Leave feedback about your experience")
 
-    find("#feedback_feedback_rating_3").click
+    # find("#feedback_feedback_rating_3").click
+    within("label[for='feedback_feedback_rating_#{rating}']") do
+      find("svg").click
+    end
 
     within "#feedback_feedback_body" do
-      fill_in with: "Very nice comment"
+      fill_in with: ::Faker::Lorem.paragraph
     end
 
     click_button "Send feedback"
     expect(page).to have_content("Thank you for your feedback")
+    expect(Decidim::Feedback::Feedback.last.rating).to eq(rating)
   end
 end
 

@@ -35,9 +35,12 @@ module Decidim
       end
 
       def rating_content(_rating)
-        tag(:span, class: "rating-value-star") do
+        # We use content_tag, because tag breaks stars!
+        # rubocop:disable Rails/ContentTag
+        content_tag(:span, class: "rating-value-star") do
           render :star_icon
         end
+        # rubocop:enable Rails/ContentTag
       end
 
       def title
