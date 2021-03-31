@@ -5,8 +5,8 @@ module Decidim
     class FeedbacksController < Decidim::ApplicationController
       include Decidim::FormFactory
 
-      # TODO: before_action -> Ensure JS format
       before_action :authenticate_user!
+      before_action :ensure_js_format!
 
       skip_before_action :store_current_location
 
@@ -36,6 +36,10 @@ module Decidim
           ::Decidim::Feedback::Permissions,
           ::Decidim::Permissions
         ]
+      end
+
+      def ensure_js_format!
+        raise NotImplementedError if request.format != :js
       end
 
       private
