@@ -28,9 +28,6 @@ en:
             title: Feedback
             total_amount: Total feedback
             unknown_source: Source unknown
-          show:
-            deleted_user: Deleted user
-            unknown_source: Source unknown
         menu:
           feedbacks: Feedback
           recipient_groups: Recipient groups
