@@ -1,4 +1,13 @@
 en:
+  activemodel:
+    attributes:
+      feedback_condition:
+        key: Key
+        value: Value
+      feedback_recipient:
+        email: Recipient email
+      feedback_recipient_group:
+        name: Name
   decidim:
     feedback:
       admin:
@@ -19,12 +28,9 @@ en:
             title: Feedback
             total_amount: Total feedback
             unknown_source: Source unknown
-          show:
-            deleted_user: Deleted user
-            unknown_source: Source unknown
         menu:
           feedbacks: Feedback
-          recipients_count: Recipient groups
+          recipient_groups: Recipient groups
         models:
           feedbacks:
             fields:

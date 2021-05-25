@@ -1,4 +1,13 @@
 sv:
+  activemodel:
+    attributes:
+      feedback_condition:
+        key: Nyckel
+        value: Värde
+      feedback_recipient:
+        email: Mottagarens e-mail
+      feedback_recipient_group:
+        name: Namn
   decidim:
     feedback:
       admin:
