@@ -2,12 +2,12 @@ sv:
   activemodel:
     attributes:
       feedback_condition:
-        key: Key
-        value: Value
+        key: Nyckel
+        value: Värde
       feedback_recipient:
-        email: Recipient email address
+        email: Mottagarens e-mail
       feedback_recipient_group:
-        name: Name
+        name: Namn
   decidim:
     feedback:
       admin:
@@ -47,39 +47,39 @@ sv:
                 "no": "Nej"
           recipient_groups:
             fields:
-              name: Name
-              metadata_conditions_count: Restriction conditions count
-              recipients_count: Number of recipients
+              name: Namn
+              metadata_conditions_count: Restriktionsvillkor räknas
+              recipients_count: Antal mottagare
         recipient_groups:
           condition:
-            condition: Condition
-            remove: Remove
+            condition: Tillstånd
+            remove: Avlägsna
           create:
-            error: Error creating a recipient group.
-            success: Recipient group successfully created.
+            error: Det gick inte att skapa en mottagargrupp.
+            success: Mottagargruppen har skapats.
           destroy:
-            success: Recipient group successfully deleted.
+            success: Mottagargruppen har tagits bort.
           edit:
-            save: Save
-            title: Edit recipient group
+            save: Spara
+            title: Redigera mottagargruppen
           form:
-            add_condition: Add condition
+            add_condition: Lägg till villkor
             add_recipient: Lägg till en mottagare
-            conditions: Restrictions
-            conditions_explanation: Restrictions allows you to specify which feedback is sent to this recipient group based on the feedback metadata. If you want this group to receive all feedback leave the restrictions empty.
+            conditions: Begränsningar
+            conditions_explanation: Med begränsningar kan du ange vilken feedback som skickas till den här mottagargruppen baserat på återkopplingsmetadata. Om du vill att denna grupp ska få all feedback, lämna begränsningarna tomma.
             recipients: Mottagare
           index:
-            no_records_html: <p>No recipient groups.</p><p>Start by adding a recipient group using the "<a href="%{new_set_link}">%{button_name}</a>" button.</p>
+            no_records_html: <p>Inga mottagargrupper.</p><p>Börja med att lägga till en mottagargrupp med "<a href="%{new_set_link}">%{button_name}</a>" knapp.</p>
             title: Recipient groups
           new:
-            add: Add
-            title: Add recipient group
+            add: Lägg till
+            title: Lägg till mottagargrupp
           recipient:
-            recipient: Vastaanottaja
-            remove: Poista
+            recipient: Mottagare
+            remove: Ta bort
           update:
-            error: Error updating the recipient group.
-            success: Recipient group successfully updated.
+            error: Fel vid uppdatering av mottagargruppen.
+            success: Mottagargruppen har uppdaterats.
         titles:
           feedbacks: Feedback
       feedback_details:
