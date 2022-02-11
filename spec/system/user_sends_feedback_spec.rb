@@ -20,9 +20,9 @@ describe "User sends feedback", type: :system do
         <html lang="en">
         <head>
           <title>Feedback Modal Test</title>
-          #{stylesheet_link_tag "application"}
-          #{javascript_include_tag "application"}
-          #{javascript_include_tag "decidim/feedback/feedback_modal"}
+          #{stylesheet_pack_tag "decidim_core"}
+          #{javascript_pack_tag "decidim_core"}
+          #{javascript_pack_tag "decidim_feedback"}
         </head>
         <body>
           #{document_inner}
