@@ -12,11 +12,6 @@ module Decidim
         root to: "feedbacks#index"
       end
 
-      initializer "decidim_feedback.assets" do |app|
-        app.config.assets.precompile += %w(decidim_feedback_manifest.js
-                                           decidim/feedback/feedback_modal.js)
-      end
-
       initializer "decidim_feedback.mount_routes", before: :add_routing_paths do
         Decidim::Core::Engine.routes.append do
           mount Decidim::Feedback::Engine => "/"
