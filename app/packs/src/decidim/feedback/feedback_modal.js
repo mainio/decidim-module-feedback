@@ -1,5 +1,3 @@
-import Rails from "@rails/ujs"
-
 $(() => {
   const $modal = $("#feedback-modal");
   const $form = $(".feedback-form", $modal);
