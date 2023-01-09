@@ -2,7 +2,12 @@
 
 module Decidim
   module Feedback
-    VERSION = "0.25.0"
-    DECIDIM_VERSION = "~> 0.25.0"
+    def self.version
+      "0.26.0"
+    end
+
+    def self.decidim_version
+      "~> 0.26.0"
+    end
   end
 end

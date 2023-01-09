@@ -6,7 +6,7 @@ require "decidim/feedback/version"
 
 Gem::Specification.new do |spec|
   spec.name = "decidim-feedback"
-  spec.version = Decidim::Feedback::VERSION
+  spec.version = Decidim::Feedback.version
   spec.required_ruby_version = ">= 2.7"
   spec.authors = ["Antti Hukkanen"]
   spec.email = ["antti.hukkanen@mainiotech.fi"]
@@ -25,8 +25,8 @@ Gem::Specification.new do |spec|
 
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "decidim-admin", Decidim::Feedback::DECIDIM_VERSION
-  spec.add_dependency "decidim-core", Decidim::Feedback::DECIDIM_VERSION
+  spec.add_dependency "decidim-admin", Decidim::Feedback.decidim_version
+  spec.add_dependency "decidim-core", Decidim::Feedback.decidim_version
 
-  spec.add_development_dependency "decidim-dev", Decidim::Feedback::DECIDIM_VERSION
+  spec.add_development_dependency "decidim-dev", Decidim::Feedback.decidim_version
 end
