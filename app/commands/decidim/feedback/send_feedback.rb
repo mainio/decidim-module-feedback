@@ -3,7 +3,7 @@
 module Decidim
   module Feedback
     # A command to add a new feedback.
-    class SendFeedback < Rectify::Command
+    class SendFeedback < Decidim::Command
       # Public: Initializes the command.
       #
       # form - The feedback form.

@@ -30,7 +30,7 @@ module Decidim
         end
 
         def metadata_conditions
-          @metadata_conditions ||= conditions.reject(&:deleted).map { |c| [c.key, c.value] }.to_h
+          @metadata_conditions ||= conditions.reject(&:deleted).to_h { |c| [c.key, c.value] }
         end
       end
     end

@@ -38,7 +38,7 @@ describe "User sends feedback", type: :system do
       end
     end
   end
-  let(:template) { template_class.new }
+  let(:template) { template_class.new(ActionView::LookupContext.new(ActionController::Base.view_paths), {}, []) }
 
   before do
     switch_to_host(organization.host)

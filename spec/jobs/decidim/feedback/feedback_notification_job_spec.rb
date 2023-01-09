@@ -7,7 +7,7 @@ describe Decidim::Feedback::FeedbackNotificationJob do
   let(:feedback) { create(:feedback, :contact, organization: organization, metadata: metadata_conditions) }
   let(:recipient_email) { ::Faker::Internet.email }
   let(:message_delivery) { instance_double(ActionMailer::MessageDelivery) }
-  let(:metadata_conditions) { { "context": "proposal" } }
+  let(:metadata_conditions) { { context: "proposal" } }
   let!(:recipient_group) do
     create(
       :recipient_group,
@@ -32,10 +32,10 @@ describe Decidim::Feedback::FeedbackNotificationJob do
   end
 
   context "when metadata conditions doesnt match" do
-    let(:metadata_conditions) { { "something": "else" } }
+    let(:metadata_conditions) { { something: "else" } }
 
     before do
-      feedback.metadata = { "foo": "bar" }
+      feedback.metadata = { foo: "bar" }
       feedback.save!
     end
 

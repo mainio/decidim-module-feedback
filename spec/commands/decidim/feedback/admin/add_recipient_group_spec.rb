@@ -14,7 +14,7 @@ module Decidim::Feedback::Admin
         current_organization: organization,
         name: ::Faker::Company.bs,
         recipient_emails: Array.new(rand(6)) { ::Faker::Internet.email },
-        metadata_conditions: { "proposals": "publish", "voting": "finish" }
+        metadata_conditions: { proposals: "publish", voting: "finish" }
       )
     end
 

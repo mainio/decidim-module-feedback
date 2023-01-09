@@ -14,7 +14,7 @@ module Decidim::Feedback::Admin
         invalid?: invalid,
         name: ::Faker::Company.bs,
         recipient_emails: Array.new(rand(6)) { ::Faker::Internet.email },
-        metadata_conditions: { "favorites": "create" }
+        metadata_conditions: { favorites: "create" }
       )
     end
 

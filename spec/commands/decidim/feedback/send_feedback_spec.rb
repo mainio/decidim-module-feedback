@@ -17,7 +17,7 @@ module Decidim::Feedback
         rating: 1,
         body: body,
         contact_request: rand(2) == 1,
-        metadata: { "foo": "bar" },
+        metadata: { foo: "bar" },
         feedbackable: resource,
         current_organization: organization,
         user: user
@@ -31,7 +31,7 @@ module Decidim::Feedback
         end
 
         it "creates feedback" do
-          expect { subject.call }.to change { Decidim::Feedback::Feedback.count }.by(1)
+          expect { subject.call }.to change(Decidim::Feedback::Feedback, :count).by(1)
         end
 
         it "creates notification job" do

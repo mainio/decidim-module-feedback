@@ -4,7 +4,7 @@ module Decidim
   module Feedback
     module Admin
       # A command to add a new recipient group.
-      class UpdateRecipientGroup < Rectify::Command
+      class UpdateRecipientGroup < Decidim::Command
         # Public: Initializes the command.
         #
         # form - The recipint group form.

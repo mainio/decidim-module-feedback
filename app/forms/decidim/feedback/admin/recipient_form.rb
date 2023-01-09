@@ -11,7 +11,7 @@ module Decidim
         attribute :position, Integer
         attribute :deleted, Boolean, default: false
 
-        validates :email, presence: true, 'valid_email_2/email': { disposable: true }, unless: :deleted
+        validates :email, presence: true, "valid_email_2/email": { disposable: true }, unless: :deleted
 
         def to_param
           return id if id.present?
