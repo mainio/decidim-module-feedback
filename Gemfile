@@ -11,7 +11,6 @@ base_path = "../" if File.basename(__dir__) == "development_app"
 require_relative "#{base_path}lib/decidim/feedback/version"
 
 DECIDIM_VERSION = Decidim::Feedback.decidim_version
-# DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.24-stable" }.freeze
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-feedback", path: "."

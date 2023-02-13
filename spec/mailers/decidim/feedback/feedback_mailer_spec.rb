@@ -23,8 +23,7 @@ module Decidim::Feedback
         let(:feedback) { create(:feedback, :contact, organization: organization) }
 
         it "has senders email" do
-          # Waiting for a fix to decidim core
-          # expect(mail.reply_to).to eq([feedback.user.email])
+          expect(mail.reply_to).to eq([feedback.user.email])
         end
       end
 
@@ -32,8 +31,7 @@ module Decidim::Feedback
         let(:feedback) { create(:feedback, :no_contact, organization: organization) }
 
         it "doesnt have reply_to email" do
-          # Waiting for a fix to decidim core
-          # expect(mail.reply_to).to eq(nil)
+          expect(mail.reply_to).to be_nil
         end
       end
     end

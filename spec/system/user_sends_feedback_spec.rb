@@ -61,7 +61,6 @@ describe "User sends feedback", type: :system do
     expect_no_js_errors
     expect(page).to have_content("Leave feedback about your experience")
 
-    # find("#feedback_feedback_rating_3").click
     within("label[for='feedback_feedback_rating_#{rating}']") do
       find("svg").click
     end
