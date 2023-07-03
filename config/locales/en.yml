@@ -75,8 +75,8 @@ en:
             add: Add
             title: Add recipient group
           recipient:
-            recipient: Vastaanottaja
-            remove: Poista
+            recipient: Recipient
+            remove: Remove
           update:
             error: Error updating the recipient group.
             success: Recipient group successfully updated.
