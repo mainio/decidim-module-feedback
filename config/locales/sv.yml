@@ -76,7 +76,7 @@ sv:
             title: Lägg till mottagargrupp
           recipient:
             recipient: Mottagare
-            remove: Radera
+            remove: Ta bort
           update:
             error: Fel vid uppdatering av mottagargruppen.
             success: Mottagargruppen har uppdaterats.
