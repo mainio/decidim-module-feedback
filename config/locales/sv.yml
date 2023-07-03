@@ -101,7 +101,7 @@ sv:
         feedback_received:
           intro: En ny feedback har skickats till %{organization_name}.
           outro: Du har fått det här meddelandet eftersom du är administratör för %{organization_name}.
-          subject: Feedback from %{organization_name}
+          subject: Feedback från %{organization_name}
       feedback_modal:
         body_label: Berätta mer om din upplevelse
         cancel: Jag vill inte lämna feedback
