@@ -13,21 +13,21 @@ sv:
       admin:
         actions:
           back: Tillbaka
-          destroy: Remove
+          destroy: Radera
           new_recipient_group: Ny mottagargrupp
           show: Visa
         feedback_info:
           close_modal: Stäng fönstret
-          title: Feedback information
+          title: Information om feedback
         feedbacks:
           index:
             average_rating: Betygsmedelvärde
-            deleted_user: Deleted user
-            no_records_html: <p>No feedback yet.</p>
+            deleted_user: Raderad användare
+            no_records_html: <p>Ingen feedback ännu.</p>
             show_email: Visa e-postadress
             title: Feedback
             total_amount: Total feedback
-            unknown_source: Source unknown
+            unknown_source: Källa okänd
         menu:
           feedbacks: Feedback
           recipient_groups: Mottagargrupp
@@ -36,11 +36,11 @@ sv:
             fields:
               body: Text
               contact_request: Kontaktförfrågan
-              rating: Rating
-              sender: Sender
+              rating: Betyg
+              sender: Avsändare
               sent_at: Sändningstid
-              source: Source
-              source_id: Source ID
+              source: Källa
+              source_id: Källans ID
             values:
               contact_request:
                 "yes": "Ja"
@@ -70,13 +70,13 @@ sv:
             recipients: Mottagare
           index:
             no_records_html: <p>Inga mottagargrupper.</p><p>Börja med att lägga till en mottagargrupp med "<a href="%{new_set_link}">%{button_name}</a>" knapp.</p>
-            title: Recipient groups
+            title: Mottagargrupp
           new:
             add: Lägg till
             title: Lägg till mottagargrupp
           recipient:
-            recipient: Mottagare
-            remove: Ta bort
+            recipient: Recipient
+            remove: Remove
           update:
             error: Fel vid uppdatering av mottagargruppen.
             success: Mottagargruppen har uppdaterats.
@@ -99,8 +99,8 @@ sv:
         user_conversations_rejected: Användaren vill inte kontaktas på plattformen.
       feedback_mailer:
         feedback_received:
-          intro: A new feedback has been sent at %{organization_name}.
-          outro: You have received this notification because you are an administrator at %{organization_name}.
+          intro: En ny feedback har skickats till %{organization_name}.
+          outro: Du har fått det här meddelandet eftersom du är administratör för %{organization_name}.
           subject: Feedback from %{organization_name}
       feedback_modal:
         body_label: Berätta mer om din upplevelse
