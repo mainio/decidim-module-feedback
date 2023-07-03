@@ -84,10 +84,10 @@ sv:
           feedbacks: Feedback
       feedback_details:
         contact_request: Jag vill bli kontaktad om min feedback
-        contact_request_answer_no: Nej
-        contact_request_answer_yes: Ja
+        contact_request_answer_no: "Nej"
+        contact_request_answer_yes: "Ja"
         feedback_body: Feedback
-        feedback_metadata: Feedback kategorisering
+        feedback_metadata: "Feedback kategorisering"
         feedback_rating: Feedback betyg
         feedback_resource: Feedback källa
         feedback_resource_id: ID
@@ -99,9 +99,9 @@ sv:
         user_conversations_rejected: Användaren vill inte kontaktas på plattformen.
       feedback_mailer:
         feedback_received:
-        intro: En ny feedback har skickats på %{organization_name}.
-        outro: Det här meddelandet skickades till dig eftersom du har identifierats som mottagare av feedback om %{organization_name}.'
-        subject: Feedback från %{organization_name}
+          intro: A new feedback has been sent at %{organization_name}.
+          outro: You have received this notification because you are an administrator at %{organization_name}.
+          subject: Feedback from %{organization_name}
       feedback_modal:
         body_label: Berätta mer om din upplevelse
         cancel: Jag vill inte lämna feedback
