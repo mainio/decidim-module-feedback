@@ -43,8 +43,8 @@ fi:
               source_id: Lähteen ID
             values:
               contact_request:
-                "yes": Kyllä
-                "no": Ei
+                "yes": "Kyllä"
+                "no": "Ei"
           recipient_groups:
             fields:
               name: Nimi
@@ -84,10 +84,10 @@ fi:
           feedbacks: Palautteet
       feedback_details:
         contact_request: Haluan, että minuun ollaan yhteydessä palautteestani
-        contact_request_answer_no: En
-        contact_request_answer_yes: Kyllä
+        contact_request_answer_no: "En"
+        contact_request_answer_yes: "Kyllä"
         feedback_body: Palaute
-        feedback_metadata: Palautteen luokittelu
+        feedback_metadata: "Palautteen luokittelu"
         feedback_rating: Arvostelu (1-5)
         feedback_resource: Palautelähde
         feedback_resource_id: ID
