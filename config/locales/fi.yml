@@ -75,8 +75,8 @@ fi:
             add: Lisää
             title: Lisää vastaanottajaryhmä
           recipient:
-            recipient: Recipient
-            remove: Remove
+            recipient: Vastaanottaja
+            remove: Poista
           update:
             error: Vastaanottajaryhmän päivitys epäonnistui.
             success: Vastaanottajaryhmän päivitys onnistui.
