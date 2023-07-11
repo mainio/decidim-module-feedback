@@ -3,16 +3,16 @@ cs:
     attributes:
       feedback_condition:
         key: Klíč
-        value: Value
+        value: Hodnota
       feedback_recipient:
-        email: Recipient email address
+        email: E-mailová adresa příjemce
       feedback_recipient_group:
-        name: Name
+        name: Název
   decidim:
     feedback:
       admin:
         actions:
-          back: Back
+          back: Zpět
           destroy: Remove
           new_recipient_group: New recipient group
           show: Show
