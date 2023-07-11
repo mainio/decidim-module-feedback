@@ -2,7 +2,7 @@ cs:
   activemodel:
     attributes:
       feedback_condition:
-        key: Key
+        key: Klíč
         value: Value
       feedback_recipient:
         email: Recipient email address
