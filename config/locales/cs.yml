@@ -13,16 +13,16 @@ cs:
       admin:
         actions:
           back: Zpět
-          destroy: Remove
-          new_recipient_group: New recipient group
-          show: Show
+          destroy: Odebrat
+          new_recipient_group: Nová skupina příjemců
+          show: Zobrazit
         feedback_info:
-          close_modal: Close window
-          title: Feedback information
+          close_modal: Zavřít okno
+          title: Informace o zpětné vazbě
         feedbacks:
           index:
-            average_rating: Rating average
-            deleted_user: Deleted user
+            average_rating: Průměr hodnocení
+            deleted_user: Odstraněný uživatel
             no_records_html: <p>No feedback yet.</p>
             show_email: Show email address
             title: Feedback
