@@ -23,88 +23,88 @@ cs:
           index:
             average_rating: Průměr hodnocení
             deleted_user: Odstraněný uživatel
-            no_records_html: <p>No feedback yet.</p>
-            show_email: Show email address
-            title: Feedback
-            total_amount: Total feedback
-            unknown_source: Source unknown
+            no_records_html: <p>Zatím žádná zpětná vazba.</p>
+            show_email: Zobrazit e-mailovou adresu
+            title: Zpětná vazba
+            total_amount: Celková zpětná vazba
+            unknown_source: Neznámý zdroj
         menu:
-          feedbacks: Feedback
-          recipient_groups: Recipient groups
+          feedbacks: Zpětná vazba
+          recipient_groups: Skupiny příjemců
         models:
           feedbacks:
             fields:
               body: Text
-              contact_request: Contact request
-              rating: Rating
-              sender: Sender
-              sent_at: Sent at
-              source: Source
-              source_id: Source ID
+              contact_request: Žádost o přátelství
+              rating: Hodnocení
+              sender: Odesílatel
+              sent_at: Odesláno v
+              source: Zdroj
+              source_id: ID zdroje
             values:
               contact_request:
-                "yes": "Yes"
-                "no": "No"
+                "yes": "Ano"
+                "no": "Ne"
           recipient_groups:
             fields:
-              name: Name
-              metadata_conditions_count: Restriction conditions count
-              recipients_count: Number of recipients
+              name: Název
+              metadata_conditions_count: Počet podmínek omezení
+              recipients_count: Počet příjemců
         recipient_groups:
           condition:
-            condition: Condition
-            remove: Remove
+            condition: Podmínka
+            remove: Odebrat
           create:
-            error: Error creating a recipient group.
-            success: Recipient group successfully created.
+            error: Chyba při vytváření skupiny příjemců.
+            success: Skupina příjemců byla úspěšně vytvořena.
           destroy:
-            success: Recipient group successfully deleted.
+            success: Skupina příjemců byla úspěšně odstraněna.
           edit:
-            save: Save
-            title: Edit recipient group
+            save: Uložit
+            title: Upravit skupinu příjemců
           form:
-            add_condition: Add condition
-            add_recipient: Add recipient
-            conditions: Restrictions
-            conditions_explanation: Restrictions allows you to specify which feedback is sent to this recipient group based on the feedback metadata. If you want this group to receive all feedback leave the restrictions empty.
-            recipients: Recipients
+            add_condition: Přidat podmínku
+            add_recipient: Přidat příjemce
+            conditions: Omezení
+            conditions_explanation: Omezení umožňují určit, která zpětná vazba je odeslána do této skupiny příjemců na základě metadat zpětné vazby. Pokud chcete, aby tato skupina obdržela veškerou zpětnou vazbu, nechte omezení prázdná.
+            recipients: Příjemci
           index:
-            no_records_html: <p>No recipient groups.</p><p>Start by adding a recipient group using the "<a href="%{new_set_link}">%{button_name}</a>" button.</p>
-            title: Recipient groups
+            no_records_html: <p>Žádné skupiny příjemců.</p><p>Začněte přidáním skupiny příjemců pomocí tlačítka "<a href="%{new_set_link}">%{button_name}</a>".</p>
+            title: Skupiny příjemců
           new:
-            add: Add
-            title: Add recipient group
+            add: Přidat
+            title: Přidat skupinu příjemců
           recipient:
-            recipient: Recipient
-            remove: Remove
+            recipient: Příjemce
+            remove: Odebrat
           update:
-            error: Error updating the recipient group.
-            success: Recipient group successfully updated.
+            error: Chyba při aktualizaci skupiny příjemců.
+            success: Skupina příjemců byla úspěšně aktualizována.
         titles:
-          feedbacks: Feedbacks
+          feedbacks: Zpětné vazby
       feedback_details:
-        contact_request: I want to be contacted about my feedback
-        contact_request_answer_no: "No"
-        contact_request_answer_yes: "Yes"
+        contact_request: Chci být kontaktován o mé zpětné vazbě
+        contact_request_answer_no: "Ne"
+        contact_request_answer_yes: "Ano"
         feedback_body: Feedback
         feedback_metadata: "Feedback categorization"
-        feedback_rating: Rating (1-5)
-        feedback_resource: Feedback source
+        feedback_rating: Hodnocení (1 - 5)
+        feedback_resource: Zdroj zpětné vazby
         feedback_resource_id: ID
-        sender_email: Sender email
-        sender_name: Sender name
-        sent_at: Sent at
-        show_email: Show email address
-        show_resource: Show feedback source
-        user_conversations_rejected: User does not want to be contacted on the platform.
+        sender_email: E-mail odesílatele
+        sender_name: Jméno odesílatele
+        sent_at: Odesláno v
+        show_email: Zobrazit e-mailovou adresu
+        show_resource: Zobrazit zdroj zpětné vazby
+        user_conversations_rejected: Uživatel nechce být kontaktován na platformě.
       feedback_mailer:
         feedback_received:
-          intro: A new feedback has been sent at %{organization_name}.
-          outro: You have received this notification because you are an administrator at %{organization_name}.
-          subject: Feedback from %{organization_name}
+          intro: Nová zpětná vazba byla odeslána v %{organization_name}.
+          outro: Obdrželi jste toto oznámení, protože jste administrátor u %{organization_name}.
+          subject: Zpětná vazba od %{organization_name}
       feedback_modal:
-        body_label: Tell us more about your experience
-        cancel: I don't want to leave feedback
+        body_label: Řekněte nám více o své zkušenosti
+        cancel: Nechci zanechat zpětnou vazbu
         cancel_confirm: Are you sure you don't want to leave feedback? Your feedback is very valuable and important to us.
         cancel_confirm_no: I changed my mind and want to leave feedback
         cancel_confirm_yes: I don't want to leave feedback
