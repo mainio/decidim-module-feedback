@@ -105,7 +105,7 @@ cs:
       feedback_modal:
         body_label: Řekněte nám více o své zkušenosti
         cancel: Nechci zanechat zpětnou vazbu
-        cancel_confirm: Are you sure you don't want to leave feedback? Your feedback is very valuable and important to us.
+        cancel_confirm: Opravdu nechcete zanechat zpětnou vazbu? Vaše zpětná vazba je pro nás velmi cenná a důležitá.
         cancel_confirm_no: I changed my mind and want to leave feedback
         cancel_confirm_yes: I don't want to leave feedback
         close_modal: Close window
