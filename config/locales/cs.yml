@@ -86,8 +86,8 @@ cs:
         contact_request: Chci být kontaktován o mé zpětné vazbě
         contact_request_answer_no: "Ne"
         contact_request_answer_yes: "Ano"
-        feedback_body: Feedback
-        feedback_metadata: "Feedback categorization"
+        feedback_body: Zpětná vazba
+        feedback_metadata: "Kategorizace zpětné vazby"
         feedback_rating: Hodnocení (1 - 5)
         feedback_resource: Zdroj zpětné vazby
         feedback_resource_id: ID
@@ -106,18 +106,18 @@ cs:
         body_label: Řekněte nám více o své zkušenosti
         cancel: Nechci zanechat zpětnou vazbu
         cancel_confirm: Opravdu nechcete zanechat zpětnou vazbu? Vaše zpětná vazba je pro nás velmi cenná a důležitá.
-        cancel_confirm_no: I changed my mind and want to leave feedback
-        cancel_confirm_yes: I don't want to leave feedback
-        close_modal: Close window
-        contact_request_label: I want to be contacted about my feedback
-        rating_label: Give feedback on your experience
-        rating_required: You need to give a rating
-        rating_value: Rate your experience on a scale of from 1 to 5 with a rating of %{value}.
-        send: Send feedback
-        thank_you: Thank you for your feedback!
-        title: Leave feedback about your experience
+        cancel_confirm_no: Změnil jsem názor a chci zanechat zpětnou vazbu
+        cancel_confirm_yes: Nechci zanechat zpětnou vazbu
+        close_modal: Zavřít okno
+        contact_request_label: Chci být kontaktován o mé zpětné vazbě
+        rating_label: Dejte zpětnou vazbu k vašim zkušenostem
+        rating_required: Musíte dát hodnocení
+        rating_value: Ohodnoťte svou zkušenost na stupnici od 1 do 5 s hodnocením %{value}.
+        send: Odeslat zpětnou vazbu
+        thank_you: Děkujeme za váš názor!
+        title: Zanechte zpětnou vazbu k vašim zkušenostem
   layouts:
     decidim:
       admin:
         feedback:
-          title: Feedback
+          title: Zpětná vazba
