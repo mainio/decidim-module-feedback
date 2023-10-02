@@ -6,7 +6,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="reveal__content" id="<%= modal_id %>-content" aria-live="assertive">
+  <div class="reveal__content" id="<%= modal_id %>_content" aria-live="assertive">
     <%= decidim_form_for(feedback_form, namespace: "feedback", url: decidim_feedback.feedbacks_path, remote: true, html: { class: "feedback-form new_feedback" }) do |f| %>
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
       <%= f.hidden_field :feedbackable_gid %>
@@ -44,36 +44,37 @@
           <%= f.check_box :contact_request, label: t("decidim.feedback.feedback_modal.contact_request_label") %>
         </div>
       </div>
-      <div class="actions text-center">
-        <%= content_tag(
-          :button,
-          t("decidim.feedback.feedback_modal.cancel"),
-          class: "link mr-2 cancel-feedback",
-          "aria-controls": "#{modal_id}-content"
-        ) %>
-        <%= f.submit t("decidim.feedback.feedback_modal.send"), class: "button primary mb-0", "aria-controls": "#{modal_id}-content" %>
+      <div class="buttons buttons-row">
+        <%= f.submit t("decidim.feedback.feedback_modal.send"), class: "button primary mb-0", "aria-controls": "#{modal_id}_content" %>
+
+        <button type="button" class="button hollow cancel-feedback" data-close><%= t("decidim.feedback.feedback_modal.cancel") %></button>
+        <% if false %>
+          <button type="button" class="button hollow cancel-feedback" data-close aria-controls="<%= modal_id %>_content"><%= t("decidim.feedback.feedback_modal.cancel") %></button>
+        <% end %>
       </div>
     <% end %>
     <div class="feedback-success hide">
       <div class="text-center lead">
         <p><%= t("decidim.feedback.feedback_modal.thank_you") %></p>
       </div>
-      <div class="actions text-center">
-        <button class="button primary" data-close><%= t("decidim.feedback.feedback_modal.close_modal") %></button>
+      <div class="buttons buttons-row">
+        <button type="button" class="button primary" data-close><%= t("decidim.feedback.feedback_modal.close_modal") %></button>
       </div>
     </div>
-    <div class="cancel-confirm hide">
-      <div class="text-center">
-        <p><%= t("decidim.feedback.feedback_modal.cancel_confirm") %></p>
-      </div>
-      <div class="actions text-center">
-        <div class="mb-4">
-          <button class="link cancel-feedback-discard" aria-controls="<%= modal_id %>-content"><%= t("decidim.feedback.feedback_modal.cancel_confirm_no") %></button>
+    <% if false %>
+      <div class="cancel-confirm hide">
+        <div class="text-center">
+          <p><%= t("decidim.feedback.feedback_modal.cancel_confirm") %></p>
         </div>
-        <div>
-          <button class="button primary" data-close><%= t("decidim.feedback.feedback_modal.cancel_confirm_yes") %></button>
+        <div class="actions text-center">
+          <div class="mb-4">
+            <button type="button" class="link cancel-feedback-discard" aria-controls="<%= modal_id %>_content"><%= t("decidim.feedback.feedback_modal.cancel_confirm_no") %></button>
+          </div>
+          <div>
+            <button type="button" class="button primary" data-close><%= t("decidim.feedback.feedback_modal.cancel_confirm_yes") %></button>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

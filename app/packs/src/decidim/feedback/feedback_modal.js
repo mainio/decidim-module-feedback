@@ -1,7 +1,7 @@
 $(() => {
   const $modal = $("#feedback-modal");
   const $form = $(".feedback-form", $modal);
-  const $cancelConfirm = $(".cancel-confirm", $modal);
+  // const $cancelConfirm = $(".cancel-confirm", $modal);
   const $rating = $(".rating-field", $form);
 
   const validateRating = () => {
@@ -19,17 +19,17 @@ $(() => {
   $modal.foundation("open");
   $form.data("form-valid", false);
 
-  $(".cancel-feedback", $modal).on("click.decidim-feedback", (ev) => {
-    ev.preventDefault();
-    $form.addClass("hide");
-    $cancelConfirm.removeClass("hide");
-  });
-  $(".cancel-feedback-discard", $modal).on("click.decidim-feedback", (ev) => {
-    ev.preventDefault();
-    $form.removeClass("hide");
-    $cancelConfirm.addClass("hide");
-    $("input[type='radio']:first", $rating).focus();
-  });
+  // $(".cancel-feedback", $modal).on("click.decidim-feedback", (ev) => {
+  //   ev.preventDefault();
+  //   $form.addClass("hide");
+  //   $cancelConfirm.removeClass("hide");
+  // });
+  // $(".cancel-feedback-discard", $modal).on("click.decidim-feedback", (ev) => {
+  //   ev.preventDefault();
+  //   $form.removeClass("hide");
+  //   $cancelConfirm.addClass("hide");
+  //   $("input[type='radio']:first", $rating).focus();
+  // });
   if ($rating.length > 0) {
     $("input", $rating).on("change", validateRating);
   }
