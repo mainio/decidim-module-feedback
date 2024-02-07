@@ -82,6 +82,8 @@ sv:
             success: Mottagargruppen har uppdaterats.
         titles:
           feedbacks: Feedback
+      create:
+        error: Det gick inte att skicka feedback.
       feedback_details:
         contact_request: Jag vill bli kontaktad om min feedback
         contact_request_answer_no: "Nej"
@@ -97,6 +99,14 @@ sv:
         show_email: Visa e-postadress
         show_resource: Visa källa för feedback
         user_conversations_rejected: Användaren vill inte kontaktas på plattformen.
+      feedback_inline:
+        rating:
+          1: 1. Väldigt svårt
+          2: 2. Ganska svårt
+          3: 3. Varken lätt eller svårt
+          4: 4. Ganska lätt
+          5: 5. Väldigt lätt
+        thank_you: Tack för din feedback!
       feedback_mailer:
         feedback_received:
           intro: En ny feedback har skickats till %{organization_name}.

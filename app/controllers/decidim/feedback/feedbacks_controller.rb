@@ -13,7 +13,15 @@ module Decidim
       def create
         enforce_permission_to :create, :feedback
 
-        @form = form(Decidim::Feedback::FeedbackForm).from_params(params)
+        @feedback_type = params[:feedback_type]
+        form_class =
+          if @feedback_type == "inline"
+            Decidim::Feedback::InlineFeedbackForm
+          else
+            Decidim::Feedback::FeedbackForm
+          end
+
+        @form = form(form_class).from_params(params)
         @feedbackable = @form.feedbackable
 
         Decidim::Feedback::SendFeedback.call(@form, current_user) do
