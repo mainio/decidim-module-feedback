@@ -5,7 +5,7 @@ $(() => {
   const $rating = $(".rating-field", $form);
 
   const validateRating = () => {
-    const ratingValue = parseInt($("input:checked", $rating).val());
+    const ratingValue = parseInt($("input:checked", $rating).val(), 10);
     if (!ratingValue || ratingValue === 0) {
       $("label", $rating).addClass("is-invalid-label");
       $(".form-error-general", $rating).addClass("is-visible");

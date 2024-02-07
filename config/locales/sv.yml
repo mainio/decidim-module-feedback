@@ -58,7 +58,7 @@ sv:
             error: Det gick inte att skapa en mottagargrupp.
             success: Mottagargruppen har skapats.
           destroy:
-            success: Mottagargruppen har tagits bort.
+            success: Mottagargruppen har raderats.
           edit:
             save: Spara
             title: Redigera mottagargruppen
