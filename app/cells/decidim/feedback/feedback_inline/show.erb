@@ -1,43 +1,15 @@
 <div id="<%= "#{content_id}_content" %>" class="text-center" data-feedback-inline>
-  <%= decidim_form_for(feedback_form, namespace: "feedback", url: decidim_feedback.feedbacks_path, remote: true, html: { class: "feedback-form new_feedback" }) do |f| %>
-    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-    <%= hidden_field_tag :feedback_type, "inline" %>
-    <%= f.hidden_field :feedbackable_gid %>
-    <%= f.hidden_field :rating, class: "feedback-rating" %>
-
-    <% (1..5).each do |rating| %>
-      <button type="button" class="button hollow" aria-controls="<%= "#{content_id}_content" %>" data-value="<%= rating %>">
-        <%= t("decidim.feedback.feedback_inline.rating.#{rating}") %>
-      </button>
-    <% end %>
+  <% if title.present? %>
+    <div class="text-center">
+      <h2 class="h4 margin-bottom-2"><%= title %></h2>
+    </div>
   <% end %>
 
-  <div class="feedback-success hide">
+  <%= render :form unless feedback_registered? %>
+
+  <div class="feedback-success<%= " hide" unless feedback_registered? %>" aria-live="polite">
     <div class="text-center lead">
       <p><%= t("decidim.feedback.feedback_inline.thank_you") %></p>
     </div>
   </div>
 </div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  var feedback = document.getElementById("<%= "#{content_id}_content" %>");
-  var form = feedback.querySelector("form");
-  var rating = feedback.querySelector(".feedback-rating");
-  var buttons = feedback.querySelectorAll("button");
-
-  buttons.forEach(function(btn) {
-    btn.addEventListener("click", function() {
-      rating.value = btn.dataset.value;
-
-      btn.classList.remove("hollow");
-      btn.classList.add("primary");
-      buttons.forEach(function(button) {
-        button.disabled = true;
-      });
-
-      window.Rails.fire(form, "submit");
-    });
-  });
-});
-</script>

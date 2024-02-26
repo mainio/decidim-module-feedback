@@ -9,12 +9,26 @@ module Decidim
       include Decidim::SanitizeHelper
       include Decidim::ResourceHelper
 
-      # TODO
-
       private
+
+      def title
+        options[:title]
+      end
 
       def content_id
         options[:content_id] || "feedback-inline"
+      end
+
+      def feedback_registered?
+        @feedback_registered ||= begin
+          query = Decidim::Feedback::Feedback
+          query = query.where(metadata: metadata) if metadata.present?
+          query.find_by(
+            feedbackable: model,
+            organization: current_organization,
+            user: current_user
+          ).present?
+        end
       end
 
       def decidim_feedback
@@ -26,9 +40,13 @@ module Decidim
           body: "",
           rating: 0,
           contact_request: false,
-          metadata: {},
+          metadata: metadata,
           feedbackable_gid: model ? model.to_sgid.to_s : ""
         )
+      end
+
+      def metadata
+        options[:metadata] || {}
       end
     end
   end

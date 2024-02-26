@@ -29,7 +29,7 @@ module Decidim
           body: "",
           rating: 0,
           contact_request: false,
-          metadata: {},
+          metadata: metadata,
           feedbackable_gid: model ? model.to_sgid.to_s : ""
         )
       end
