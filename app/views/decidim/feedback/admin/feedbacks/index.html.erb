@@ -42,12 +42,12 @@
                       <% presented_user = present(feedback.user) %>
                       <%= presented_user.name %>
                       <% if allowed_to? :show_email, :user, user: feedback.user %>
-                        <%= icon_link_to "envelope-open", decidim_admin.show_email_officialization_path(user_id: feedback.user.id), t(".show_email"), class: "action-icon action-icon--show-email", data: { full_name: presented_user.name, toggle: "show-email-modal" } %>
+                        <%= icon_link_to "mail-open-line", decidim_admin.show_email_officialization_path(user_id: feedback.user.id), t(".show_email"), class: "action-icon action-icon--show-email", data: { full_name: presented_user.name, toggle: "show-email-modal" } %>
                       <% end %>
                       <% if presented_user.can_be_contacted? && presented_user.nickname != present(current_user).nickname %>
                         <% contact_link = current_or_new_conversation_path_with(feedback.user) %>
                         <% if contact_link %>
-                          <%= icon_link_to "envelope-closed", contact_link, t("decidim.contact"), class:"action-icon--new", target: "_blank" %>
+                          <%= icon_link_to "mail-line", contact_link, t("decidim.contact"), class:"action-icon--new", target: "_blank" %>
                         <% end %>
                       <% end %>
                     <% end %>
@@ -65,7 +65,7 @@
                 <td><%= feedback.contact_request_human %></td>
                 <td class="table-list__actions">
                   <% if allowed_to? :read, :feedback %>
-                    <%= icon_link_to "eye", feedback_path(feedback), t("actions.show", scope: "decidim.feedback.admin"), class: "action-icon--show", data: { remote: true } %>
+                    <%= icon_link_to "eye-line", feedback_path(feedback), t("actions.show", scope: "decidim.feedback.admin"), class: "action-icon--show", data: { remote: true } %>
                     <%= link_to t("actions.show", scope: "decidim.feedback.admin"), feedback_path(feedback), data: { remote: true } %>
                   <% end %>
                 </td>

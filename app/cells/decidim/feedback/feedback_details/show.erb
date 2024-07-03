@@ -10,7 +10,7 @@
     <%= model.user.name %> (ID: <%= model.user.id %>)
     <% if show_email_link? %>
       <%= icon_link_to(
-        "envelope-open",
+        "mail-open-line",
         decidim_admin.show_email_officialization_path(user_id: model.user.id),
         t(".show_email"),
         class: "action-icon action-icon--show-email",

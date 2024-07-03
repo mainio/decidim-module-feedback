@@ -34,11 +34,17 @@ module Decidim
             menu.add_item :feedback,
                           I18n.t("menu.feedbacks", scope: "decidim.feedback.admin"),
                           decidim_feedback_admin.feedbacks_path,
-                          icon_name: "bullhorn",
+                          icon_name: "megaphone-line",
                           position: 6.1,
                           active: :inclusive,
                           if: allowed_to?(:update, :organization, organization: current_organization)
           end
+        end
+
+        initializer "decidim_core.register_icons", after: "decidim_core.add_social_share_services" do
+          Decidim.icons.register(name: "megaphone-line", icon: "megaphone-line", category: "system", description: "", engine: :core)
+          Decidim.icons.register(name: "circle-line", icon: "circle-line", category: "system", description: "", engine: :core)
+          Decidim.icons.register(name: "mail-open-line", icon: "mail-open-line", category: "system", description: "", engine: :core)
         end
       end
     end

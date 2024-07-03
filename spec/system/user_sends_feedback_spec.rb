@@ -21,8 +21,8 @@ describe "User sends feedback", type: :system do
         <head>
           <title>Feedback Modal Test</title>
           #{stylesheet_pack_tag "decidim_core"}
-          #{javascript_pack_tag "decidim_core"}
-          #{javascript_pack_tag "decidim_feedback"}
+          #{append_javascript_pack_tag "decidim_core"}
+          #{append_javascript_pack_tag "decidim_feedback"}
         </head>
         <body>
           #{document_inner}

@@ -88,7 +88,7 @@ describe "Admin manages recipient groups", type: :system do
       it "deletes recipient group" do
         find(:css, ".action-icon.action-icon--remove", match: :first).click
         expect(page).to have_content("Confirm delete")
-        click_link "OK"
+        click_on "OK"
         expect(page).to have_content("Recipient group successfully deleted")
       end
     end
