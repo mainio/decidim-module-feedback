@@ -1,12 +1,8 @@
-<div class="reveal" id="<%= modal_id %>" data-reveal>
-  <div class="reveal__header">
-    <h2 class="reveal__title"><%= t(".title") %></h2>
-    <button class="close-button" data-close aria-label="<%= t(".close_modal") %>"
-      type="button">
-      <span aria-hidden="true">&times;</span>
-    </button>
+<%= decidim_modal id: modal_id do %>
+  <div>
+    <h2><%= t(".title") %></h2>
   </div>
-  <div class="reveal__content" id="<%= modal_id %>-content" aria-live="assertive">
+  <div id="<%= modal_id %>-content" aria-live="assertive">
     <%== cell(
       "decidim/feedback/feedback_details",
       model,
@@ -15,4 +11,4 @@
       show_contact: show_contact?
     ) %>
   </div>
-</div>
+<% end %>

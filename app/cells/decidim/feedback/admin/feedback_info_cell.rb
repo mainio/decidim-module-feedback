@@ -8,7 +8,7 @@ module Decidim
         private
 
         def modal_id
-          options[:modal_id] || "feedback-info-modal"
+          options[:modal_id] || "feedbackInfoModal"
         end
 
         def show_email_link?

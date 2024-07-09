@@ -1,5 +1,5 @@
 $(() => {
-  const $modal = $("#feedback-modal");
+  const $modal = $("#feedbackModal");
   const $form = $(".feedback-form", $modal);
   // const $cancelConfirm = $(".cancel-confirm", $modal);
   const $rating = $(".rating-field", $form);
@@ -16,7 +16,8 @@ $(() => {
     }
   };
 
-  $modal.foundation("open");
+  window.Decidim.currentDialogs.feedbackModal.open()
+
   $form.data("form-valid", false);
 
   // $(".cancel-feedback", $modal).on("click.decidim-feedback", (ev) => {
@@ -30,6 +31,7 @@ $(() => {
   //   $cancelConfirm.addClass("hide");
   //   $("input[type='radio']:first", $rating).focus();
   // });
+
   if ($rating.length > 0) {
     $("input", $rating).on("change", validateRating);
   }
@@ -42,16 +44,11 @@ $(() => {
     $form.data("form-valid", false);
     validateRating();
   });
-  // Rails does not understand the remote option in the forms that are in
-  // reveal modals because they are re-entered into the DOM. Therefore, we
-  // will prevent the default submit action and fire the submit through
-  // rails-ujs.
-  $form.on("submit.decidim-feedback", (ev) => {
-    ev.preventDefault();
+
+  $form.on("submit.decidim-feedback", () => {
     if ($form.data("form-valid")) {
-      $form.off("submit.decidim-feedback");
-      $(".actions button", $form).attr("disabled", true);
-      Rails.fire($form[0], "submit");
+      $(".feedback-form").addClass("hidden");
+      $(".feedback-success").removeClass("hidden");
     }
   });
 });

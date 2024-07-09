@@ -70,3 +70,20 @@ $feedback-outline: 2px solid $feedback-outline-color !default;
     }
   }
 }
+
+.add-recipient,
+.add-condition{
+  @apply ml-2 mb-2 mt-2;
+}
+
+.recipient-email{
+  @apply mb-2 ml-2;
+}
+
+.condition-key{
+  @apply mb-2 ml-[26px];
+}
+
+.condition-value{
+  @apply mb-2 ml-4;
+}

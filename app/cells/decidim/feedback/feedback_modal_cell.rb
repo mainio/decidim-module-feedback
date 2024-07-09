@@ -17,7 +17,7 @@ module Decidim
       private
 
       def modal_id
-        options[:modal_id] || "feedback-modal"
+        options[:modal_id] || "feedbackModal"
       end
 
       def decidim_feedback

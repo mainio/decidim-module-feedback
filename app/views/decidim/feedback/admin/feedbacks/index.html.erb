@@ -1,93 +1,90 @@
-<div class="card" id="feedbacks">
-  <div class="card-divider">
-    <h2 class="card-title flex--sbc">
-      <div>
-        <%= t ".title" %>
-      </div>
+<% add_decidim_page_title(t("pages", scope: "decidim.admin.titles")) %>
 
-      <div class="flex--cc flex-gap--1">
-        <div id="js-other-actions-wrapper">
-          <% if @feedbacks.count > 0 && allowed_to?(:export, :feedback) %>
-            <%= render partial: "export_dropdown" %>
-          <% end %>
-        </div>
-      </div>
-    </h2>
-  </div>
-  <div class="card-section">
-    <% if @feedbacks.count > 0 %>
-      <div class="table-scroll">
-        <table class="table-list">
-          <thead>
+<div class="item_show__header">
+  <h1 class="item_show__header-title">
+    <%= t(".title") %>
+    <div id="js-other-actions-wrapper" class="flex align-middle gap-x-4 ml-auto">
+      <% if @feedbacks.count > 0 && allowed_to?(:export, :feedback) %>
+        <%= render partial: "export_dropdown" %>
+      <% end %>
+    </div>
+  </h1>
+</div>
+
+<div class="card-section">
+  <% if @feedbacks.count > 0 %>
+    <div class="table-scroll">
+      <table class="table-list">
+        <thead>
+          <tr>
+            <th><%= t("models.feedbacks.fields.sent_at", scope: "decidim.feedback.admin") %></th>
+            <th><%= t("models.feedbacks.fields.sender", scope: "decidim.feedback.admin") %></th>
+            <th><%= t("models.feedbacks.fields.body", scope: "decidim.feedback.admin") %></th>
+            <th><%= t("models.feedbacks.fields.source", scope: "decidim.feedback.admin") %></th>
+            <th><%= t("models.feedbacks.fields.source_id", scope: "decidim.feedback.admin") %></th>
+            <th><%= t("models.feedbacks.fields.rating", scope: "decidim.feedback.admin") %></th>
+            <th><%= t("models.feedbacks.fields.contact_request", scope: "decidim.feedback.admin") %></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @feedbacks.each do |feedback| %>
             <tr>
-              <th><%= t("models.feedbacks.fields.sent_at", scope: "decidim.feedback.admin") %></th>
-              <th><%= t("models.feedbacks.fields.sender", scope: "decidim.feedback.admin") %></th>
-              <th><%= t("models.feedbacks.fields.body", scope: "decidim.feedback.admin") %></th>
-              <th><%= t("models.feedbacks.fields.source", scope: "decidim.feedback.admin") %></th>
-              <th><%= t("models.feedbacks.fields.source_id", scope: "decidim.feedback.admin") %></th>
-              <th><%= t("models.feedbacks.fields.rating", scope: "decidim.feedback.admin") %></th>
-              <th><%= t("models.feedbacks.fields.contact_request", scope: "decidim.feedback.admin") %></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @feedbacks.each do |feedback| %>
-              <tr>
-                <td><%= l(feedback.created_at, format: :short) %></td>
-                <td>
-                  <% if feedback.user %>
-                    <% if feedback.user.deleted? %>
-                      <%= t(".deleted_user") %>
-                    <% else %>
-                      <% presented_user = present(feedback.user) %>
-                      <%= presented_user.name %>
-                      <% if allowed_to? :show_email, :user, user: feedback.user %>
-                        <%= icon_link_to "mail-open-line", decidim_admin.show_email_officialization_path(user_id: feedback.user.id), t(".show_email"), class: "action-icon action-icon--show-email", data: { full_name: presented_user.name, toggle: "show-email-modal" } %>
-                      <% end %>
-                      <% if presented_user.can_be_contacted? && presented_user.nickname != present(current_user).nickname %>
-                        <% contact_link = current_or_new_conversation_path_with(feedback.user) %>
-                        <% if contact_link %>
-                          <%= icon_link_to "mail-line", contact_link, t("decidim.contact"), class:"action-icon--new", target: "_blank" %>
-                        <% end %>
+              <td><%= l(feedback.created_at, format: :short) %></td>
+              <td>
+                <% if feedback.user %>
+                  <% if feedback.user.deleted? %>
+                    <%= t(".deleted_user") %>
+                  <% else %>
+                    <% presented_user = present(feedback.user) %>
+                    <%= presented_user.name %>
+                    <% if allowed_to? :show_email, :user, user: feedback.user %>
+                      <%= icon_link_to "mail-open-line", decidim_admin.show_email_officialization_path(user_id: feedback.user.id), t(".show_email"), class: "action-icon action-icon--show-email", data: { full_name: presented_user.name, dialog_open: "show-email-modal" } %>
+                    <% end %>
+                    <% if presented_user.can_be_contacted? && presented_user.nickname != present(current_user).nickname %>
+                      <% contact_link = current_or_new_conversation_path_with(feedback.user) %>
+                      <% if contact_link %>
+                        <%= icon_link_to "mail-line", contact_link, t("decidim.contact"), class:"action-icon--new", target: "_blank" %>
                       <% end %>
                     <% end %>
                   <% end %>
-                </td>
-                <td><%= truncate strip_tags(feedback.body), length: 100 %></td>
-                <% if feedback.feedbackable %>
-                  <td><%= feedback.feedbackable.class.model_name.human(count: 2) %></td>
-                  <td><%= feedback.feedbackable.id %></td>
-                <% else %>
-                  <td><%= t(".unknown_source") %></td>
-                  <td></td>
                 <% end %>
-                <td><%= feedback.rating %></td>
-                <td><%= feedback.contact_request_human %></td>
-                <td class="table-list__actions">
-                  <% if allowed_to? :read, :feedback %>
-                    <%= icon_link_to "eye-line", feedback_path(feedback), t("actions.show", scope: "decidim.feedback.admin"), class: "action-icon--show", data: { remote: true } %>
-                    <%= link_to t("actions.show", scope: "decidim.feedback.admin"), feedback_path(feedback), data: { remote: true } %>
-                  <% end %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-        <%= paginate @feedbacks, theme: "decidim" %>
-      </div>
-    <% else %>
-      <div class="text-center">
-        <%= t ".no_records_html" %>
-      </div>
-    <% end %>
-  </div>
-  <div class="card-divider">
-    <strong><%= t ".total_amount" %>:&nbsp;</strong><span><%= @collection.count %></span>
-    <% if average_rating %>
-      <span>&nbsp;|&nbsp;</span>
-      <strong><%= t ".average_rating" %>:&nbsp;</strong><span><%= number_with_precision(average_rating, precision: 2) %></span>
-    <% end %>
-  </div>
+              </td>
+              <td><%= truncate strip_tags(feedback.body), length: 100 %></td>
+              <% if feedback.feedbackable %>
+                <td><%= feedback.feedbackable.class.model_name.human(count: 2) %></td>
+                <td><%= feedback.feedbackable.id %></td>
+              <% else %>
+                <td><%= t(".unknown_source") %></td>
+                <td></td>
+              <% end %>
+              <td><%= feedback.rating %></td>
+              <td><%= feedback.contact_request_human %></td>
+              <td class="table-list__actions">
+                <% if allowed_to? :read, :feedback %>
+                  <%= icon_link_to "eye-line", feedback_path(feedback), t("actions.show", scope: "decidim.feedback.admin"), class: "action-icon--show", data: { remote: true } %>
+                  <%= link_to t("actions.show", scope: "decidim.feedback.admin"), feedback_path(feedback), data: { remote: true } %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @feedbacks, theme: "decidim" %>
+    </div>
+  <% else %>
+    <div class="text-center">
+      <%= t ".no_records_html" %>
+    </div>
+  <% end %>
+</div>
+<div class="card-divider">
+  <strong><%= t ".total_amount" %>:&nbsp;</strong><span><%= @collection.count %></span>
+  <% if average_rating %>
+    <span>&nbsp;|&nbsp;</span>
+    <strong><%= t ".average_rating" %>:&nbsp;</strong><span><%= number_with_precision(average_rating, precision: 2) %></span>
+  <% end %>
 </div>
 
 <%= render "decidim/admin/officializations/show_email_modal" %>
+<%= append_javascript_pack_tag "decidim_feedback_modal_admin" %>

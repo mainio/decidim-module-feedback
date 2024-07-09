@@ -7,9 +7,12 @@ module Decidim
         include Decidim::ApplicationHelper
         include Paginable
 
-        layout "decidim/admin/feedback"
+        layout "decidim/admin/feedbacks"
 
+        helper Decidim::ApplicationHelper
         helper_method :feedback, :average_rating, :present
+
+        add_breadcrumb_item_from_menu :admin_feedback_menu
 
         def index
           enforce_permission_to :read, :feedback

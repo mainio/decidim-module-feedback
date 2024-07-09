@@ -31,6 +31,8 @@ sv:
         menu:
           feedbacks: Feedback
           recipient_groups: Mottagargrupp
+          admin_menu:
+            feedback: Feedback
         models:
           feedbacks:
             fields:

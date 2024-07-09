@@ -57,7 +57,7 @@ describe "User sends feedback", type: :system do
 
   it "creates feedback" do
     visit "/test_feedback_cell"
-    page.execute_script('$("#feedback-modal").foundation("open")')
+    page.execute_script('window.Decidim.currentDialogs.feedbackModal.open()')
     expect_no_js_errors
     expect(page).to have_content("Leave feedback about your experience")
 

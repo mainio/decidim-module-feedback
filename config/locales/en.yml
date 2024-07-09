@@ -29,8 +29,10 @@ en:
             total_amount: Total feedback
             unknown_source: Source unknown
         menu:
-          feedbacks: Feedback
+          feedbacks: Feedbacks
           recipient_groups: Recipient groups
+          admin_menu:
+            feedback: Feedback
         models:
           feedbacks:
             fields:

@@ -1,23 +1,9 @@
-<div class="card">
-  <div class="card-divider">
-    <h2 class="card-title flex--sbc">
-      <div>
-        <%= link_to t("decidim.feedback.admin.menu.recipient_groups"), recipient_groups_path %>
-        &gt;
-        <%= title %>
+<div class="form__wrapper">
+  <div class="card pt-4">
+    <div class="card-section">
+      <div class="row column">
+        <%= form.translated :text_field, :name, autofocus: true %>
       </div>
-
-      <div class="flex--cc flex-gap--1">
-        <div id="js-other-actions-wrapper">
-          <%= link_to t("actions.back", scope: "decidim.feedback.admin"), recipient_groups_path, class: "button hollow tiny button--simple" %>
-        </div>
-      </div>
-    </h2>
-  </div>
-
-  <div class="card-section">
-    <div class="row column">
-      <%= form.translated :text_field, :name, autofocus: true %>
     </div>
   </div>
 </div>
@@ -50,7 +36,7 @@
         <% end %>
       </div>
 
-      <button class="button small hollow add-recipient"><%= t(".add_recipient") %></button>
+      <button class="button button__sm button__transparent-secondary button--title add-recipient"><%= t(".add_recipient") %></button>
     </div>
   </div>
 </div>
@@ -68,7 +54,7 @@
       </div>
     <% end %>
 
-    <p class="help-text"><%= t(".conditions_explanation") %></p>
+    <span class="help-text ml-4 mb-2"><%= t(".conditions_explanation") %></span>
 
     <div class="recipient-group-conditions">
       <%= fields_for "conditions[#{blank_condition.to_param}]", blank_condition do |condition_form| %>
@@ -85,7 +71,7 @@
         <% end %>
       </div>
 
-      <button class="button small hollow add-condition"><%= t(".add_condition") %></button>
+      <button class="button button__sm button__transparent-secondary button--title add-condition"><%= t(".add_condition") %></button>
     </div>
   </div>
 </div>

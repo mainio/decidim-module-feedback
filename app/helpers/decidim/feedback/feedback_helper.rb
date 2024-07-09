@@ -9,7 +9,7 @@ module Decidim
 
       def trigger_feedback_modal(resource, options)
         modal = feedback_modal(resource, options)
-        modal + javascript_pack_tag("decidim_feedback")
+        modal + append_javascript_pack_tag("decidim_feedback")
       end
     end
   end

@@ -6,9 +6,11 @@ module Decidim
       class RecipientGroupsController < Decidim::Feedback::Admin::ApplicationController
         include Paginable
 
-        layout "decidim/admin/feedback"
+        layout "decidim/admin/feedbacks"
 
         helper_method :recipient_group, :blank_recipient, :blank_condition
+
+        add_breadcrumb_item_from_menu :admin_feedback_menu
 
         def index
           enforce_permission_to :read, :recipient_group
