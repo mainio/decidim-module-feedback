@@ -40,7 +40,7 @@ module Decidim
           metadata: form.metadata,
           feedbackable: form.feedbackable,
           organization: form.current_organization,
-          user: user
+          user:
         )
       end
 

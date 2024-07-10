@@ -2,14 +2,14 @@
 
 require "spec_helper"
 
-describe "User sends feedback", type: :system do
+describe "Feedback" do
   let(:organization) { create(:organization) }
-  let(:user) { create(:user, :confirmed, organization: organization) }
+  let(:user) { create(:user, :confirmed, organization:) }
   let(:html_body) do
     Decidim::ViewModel.cell("decidim/feedback/feedback_modal", resource, context: { current_user: user }).call.to_s
   end
-  let(:resource) { create(:dummy_resource, component: component) }
-  let(:component) { create(:dummy_component, organization: organization) }
+  let(:resource) { create(:dummy_resource, component:) }
+  let(:component) { create(:dummy_component, organization:) }
   let(:rating) { rand(1..5) }
   let(:html_head) { "" }
   let(:html_document) do
@@ -21,8 +21,7 @@ describe "User sends feedback", type: :system do
         <head>
           <title>Feedback Modal Test</title>
           #{stylesheet_pack_tag "decidim_core"}
-          #{append_javascript_pack_tag "decidim_core"}
-          #{append_javascript_pack_tag "decidim_feedback"}
+          #{javascript_pack_tag "decidim_core", "decidim_feedback"}
         </head>
         <body>
           #{document_inner}
@@ -43,9 +42,12 @@ describe "User sends feedback", type: :system do
   before do
     switch_to_host(organization.host)
     final_html = html_document
+    favicon = ""
+
     Rails.application.routes.draw do
       mount Decidim::Feedback::Engine => "/"
       get "test_feedback_cell", to: ->(_) { [200, {}, [final_html]] }
+      get "/favicon.ico", to: ->(_) { [200, {}, [favicon]] }
     end
 
     login_as user, scope: :user
@@ -57,19 +59,19 @@ describe "User sends feedback", type: :system do
 
   it "creates feedback" do
     visit "/test_feedback_cell"
-    page.execute_script('window.Decidim.currentDialogs.feedbackModal.open()')
+
     expect_no_js_errors
-    expect(page).to have_content("Leave feedback about your experience")
+    expect(page).to have_content("Give feedback on your experience")
 
     within("label[for='feedback_feedback_rating_#{rating}']") do
       find("svg").click
     end
 
     within "#feedback_feedback_body" do
-      fill_in with: ::Faker::Lorem.paragraph
+      fill_in with: Faker::Lorem.paragraph
     end
 
-    click_button "Send feedback"
+    click_on "Send feedback"
     expect(page).to have_content("Thank you for your feedback")
     expect(Decidim::Feedback::Feedback.last.rating).to eq(rating)
   end

@@ -20,7 +20,7 @@ module Decidim
         end
 
         def show
-          enforce_permission_to :read, :feedback, feedback: feedback
+          enforce_permission_to :read, :feedback, feedback:
         end
 
         def export

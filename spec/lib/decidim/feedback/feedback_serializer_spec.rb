@@ -5,7 +5,7 @@ require "spec_helper"
 module Decidim::Feedback
   describe FeedbackSerializer do
     subject { described_class.new(feedback) }
-    let(:feedback) { create(:feedback, organization: organization) }
+    let(:feedback) { create(:feedback, organization:) }
     let(:organization) { create(:organization) }
     let(:user) { create(:user, :confirmed) }
     let(:serialized) { subject.serialize }

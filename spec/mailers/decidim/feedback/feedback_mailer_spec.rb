@@ -3,9 +3,9 @@
 require "spec_helper"
 
 module Decidim::Feedback
-  describe FeedbackMailer, type: :mailer do
+  describe FeedbackMailer do
     let(:organization) { create(:organization) }
-    let(:feedback) { create(:feedback, organization: organization) }
+    let(:feedback) { create(:feedback, organization:) }
     let(:recipient_email) { ::Faker::Internet.email }
 
     describe "#feedback_received" do
@@ -20,7 +20,7 @@ module Decidim::Feedback
       end
 
       context "when sender wants to be contacted" do
-        let(:feedback) { create(:feedback, :contact, organization: organization) }
+        let(:feedback) { create(:feedback, :contact, organization:) }
 
         it "has senders email" do
           expect(mail.reply_to).to eq([feedback.user.email])
@@ -28,7 +28,7 @@ module Decidim::Feedback
       end
 
       context "when sender doesnt want to be contacted" do
-        let(:feedback) { create(:feedback, :no_contact, organization: organization) }
+        let(:feedback) { create(:feedback, :no_contact, organization:) }
 
         it "doesnt have reply_to email" do
           expect(mail.reply_to).to be_nil

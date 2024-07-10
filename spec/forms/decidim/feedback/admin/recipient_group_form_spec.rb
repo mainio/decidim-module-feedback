@@ -6,7 +6,7 @@ describe Decidim::Feedback::Admin::RecipientGroupForm do
   subject { described_class.from_model(recipient_group) }
 
   let(:organization) { create(:organization) }
-  let(:recipient_group) { create(:recipient_group, organization: organization) }
+  let(:recipient_group) { create(:recipient_group, organization:) }
 
   describe "#recipient_emails" do
     it "returns emails" do
@@ -17,7 +17,7 @@ describe Decidim::Feedback::Admin::RecipientGroupForm do
       let(:recipient_group) do
         create(
           :recipient_group,
-          organization: organization,
+          organization:,
           recipient_emails: emails
         )
       end

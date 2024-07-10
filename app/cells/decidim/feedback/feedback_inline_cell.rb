@@ -22,7 +22,7 @@ module Decidim
       def feedback_registered?
         @feedback_registered ||= begin
           query = Decidim::Feedback::Feedback
-          query = query.where(metadata: metadata) if metadata.present?
+          query = query.where(metadata:) if metadata.present?
           query.find_by(
             feedbackable: model,
             organization: current_organization,
@@ -40,7 +40,7 @@ module Decidim
           body: "",
           rating: 0,
           contact_request: false,
-          metadata: metadata,
+          metadata:,
           feedbackable_gid: model ? model.to_sgid.to_s : ""
         )
       end

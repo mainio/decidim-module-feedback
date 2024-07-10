@@ -21,7 +21,7 @@ module Decidim
           mail(
             to: recipient_email,
             reply_to: sender_email.presence,
-            subject: subject
+            subject:
           )
         end
       end

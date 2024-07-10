@@ -18,10 +18,10 @@ module Decidim
 
         def map_model(model)
           self.recipients = model.recipient_emails.map do |email|
-            RecipientForm.new(email: email)
+            RecipientForm.new(email:)
           end
           self.conditions = model.metadata_conditions.map do |key, value|
-            ConditionForm.new(key: key, value: value)
+            ConditionForm.new(key:, value:)
           end
         end
 

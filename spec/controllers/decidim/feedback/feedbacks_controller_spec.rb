@@ -4,11 +4,11 @@ require "spec_helper"
 
 module Decidim
   module Feedback
-    describe FeedbacksController, type: :controller do
+    describe FeedbacksController do
       routes { Decidim::Feedback::Engine.routes }
 
       let(:organization) { create(:organization) }
-      let(:user) { create(:user, :confirmed, organization: organization) }
+      let(:user) { create(:user, :confirmed, organization:) }
       let(:feedback_body) { ::Faker::Lorem.sentence }
       let(:rating) { rand(6) }
       let(:contact_request) { rand(2) }
@@ -22,7 +22,7 @@ module Decidim
 
       describe "POST create" do
         it "creates a new feedback" do
-          post :create, format: :js, params: params
+          post(:create, format: :js, params:)
           expect(Decidim::Feedback::Feedback.last.rating).to eq(rating)
           expect(Decidim::Feedback::Feedback.last.body).to eq(feedback_body)
           expect(Decidim::Feedback::Feedback.last.contact_request).to eq(contact_request == 1)

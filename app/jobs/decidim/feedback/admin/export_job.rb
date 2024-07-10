@@ -8,7 +8,7 @@ module Decidim
 
         def perform(user, organization, name, format)
           export_data = Decidim::Exporters.find_exporter(format).new(
-            Decidim::Feedback::Feedback.where(organization: organization),
+            Decidim::Feedback::Feedback.where(organization:),
             FeedbackSerializer
           ).export
 
