@@ -22,11 +22,11 @@ module Decidim
         subject { cell_instance.call }
 
         it "renders the title" do
-          is_expected.to have_content("Give feedback")
+          expect(subject).to have_content("Give feedback")
         end
 
         it "renders the feedback form" do
-          is_expected.to have_css(".feedback-form.new_feedback")
+          expect(subject).to have_css(".feedback-form.new_feedback")
         end
       end
 
