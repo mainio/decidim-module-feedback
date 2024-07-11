@@ -29,10 +29,10 @@ cs:
             total_amount: Celková zpětná vazba
             unknown_source: Neznámý zdroj
         menu:
-          feedbacks: Feedbacks
+          feedbacks: Připomínky
           recipient_groups: Skupiny příjemců
           admin_menu:
-            feedback: Feedback
+            feedback: Zpětná vazba
         models:
           feedbacks:
             fields:
@@ -85,7 +85,7 @@ cs:
         titles:
           feedbacks: Zpětné vazby
       create:
-        error: Error submitting feedback.
+        error: Chyba při odesílání zpětné vazby.
       feedback_details:
         contact_request: Chci být kontaktován o mé zpětné vazbě
         contact_request_answer_no: "Ne"
@@ -103,12 +103,12 @@ cs:
         user_conversations_rejected: Uživatel nechce být kontaktován na platformě.
       feedback_inline:
         rating:
-          1: 1. Very difficult
-          2: 2. Quite difficult
-          3: 3. Neither difficult nor easy
-          4: 4. Quite easy
-          5: 5. Very easy
-        thank_you: Thank you for your feedback!
+          1: 1. Obtížné
+          2: 2. Velmi obtížné
+          3: 3. Ani obtížné, ani snadné
+          4: 4. Snadné
+          5: 5. Velmi snadné
+        thank_you: Děkujeme za váš názor!
       feedback_mailer:
         feedback_received:
           intro: Nová zpětná vazba byla odeslána v %{organization_name}.
