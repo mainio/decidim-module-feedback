@@ -44,7 +44,7 @@ module Decidim
                 options
               ).and_return(cell)
 
-            helper.trigger_feedback_modal(dummy_resource, options)
+            expect(helper.trigger_feedback_modal(dummy_resource, options)).to eq("<div>something</div>")
           end
         end
       end

@@ -2,11 +2,11 @@
 
 require "spec_helper"
 
-describe Decidim::Feedback::Admin::FeedbacksController, type: :controller do
+describe Decidim::Feedback::Admin::FeedbacksController do
   routes { Decidim::Feedback::Admin::Engine.routes }
 
   let(:organization) { create(:organization) }
-  let(:user) { create(:user, :admin, :confirmed, organization: organization) }
+  let(:user) { create(:user, :admin, :confirmed, organization:) }
   let(:resource) { create(:dummy_resource) }
   let(:params) { { favoritable_gid: resource.to_sgid.to_s } }
 
@@ -25,7 +25,7 @@ describe Decidim::Feedback::Admin::FeedbacksController, type: :controller do
   end
 
   describe "GET show" do
-    let(:feedback) { create(:feedback, organization: organization, user: user) }
+    let(:feedback) { create(:feedback, organization:, user:) }
 
     it "renders the show view" do
       get :show, params: { id: feedback.id, format: :js }, xhr: true

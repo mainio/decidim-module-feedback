@@ -1,36 +1,38 @@
 (function() {
-  var modalId = "feedback-<%= @feedback.id %>";
+  var modalId = "feedback<%= @feedback.id %>";
   var modalHtml = '<%= j((
     cell(
       "decidim/feedback/admin/feedback_info",
       @feedback,
-      modal_id: "feedback-#{@feedback.id}",
+      modal_id: "feedback#{@feedback.id}",
       show_email_link: allowed_to?(:show_email, :user, user: @feedback.user),
       show_contact: true
     )
   ).to_s.strip.html_safe) %>';
 
-  var $modal = $("#" + modalId);
-  if ($modal.length < 1) {
-    $modal = $(modalHtml);
-    $("body").append($modal);
+  var modal = document.getElementById(modalId);
+  if (!modal) {
+    modal = document.createElement("div");
+    modal.innerHTML = modalHtml;
+    modal = modal.firstElementChild;
+    document.body.appendChild(modal);
+    createDialog(modal);
 
-    $modal.foundation();
+    var emailModal = document.getElementById("show-email-modal");
+    const button = emailModal.querySelector("[data-open=user_email]");
+    const email = emailModal.querySelector("#user_email");
+    const fullName = emailModal.querySelector("#user_full_name");
 
-    var $emailModal = $("#show-email-modal");
-    const $button = $("[data-open=user_email]", $emailModal);
-    const $email = $("#user_email", $emailModal);
-    const $fullName = $("#user_full_name", $emailModal);
-
-    $("[data-toggle=show-email-modal]", $modal).on("click", function(ev) {
+    modal.querySelector("[data-dialog-open=show-email-modal]").addEventListener("click", (ev) => {
       ev.preventDefault();
 
-      $button.show();
-      $button.attr("data-open-url", event.currentTarget.href);
-      $fullName.text($(event.currentTarget).data("full-name"));
-      $email.html("");
+      window.Decidim.currentDialogs[modalId].close()
+      button.style.display = 'block';
+      button.setAttribute("data-remote-url", ev.currentTarget.href);
+      fullName.textContent = ev.currentTarget.getAttribute("data-full-name");
+      email.innerHTML = "";
     })
   }
 
-  $modal.foundation("open")
+  window.Decidim.currentDialogs[modalId].open()
 })();

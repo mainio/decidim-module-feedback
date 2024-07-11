@@ -4,7 +4,7 @@
     <h2 class="card-title">
       <span><%= t(".recipient") %></span>
 
-      <button class="button small alert hollow remove-feedback-recipient button--title">
+      <button class="button button__sm button__transparent-secondary remove-feedback-recipient button--title">
         <%= t(".remove") %>
       </button>
     </h2>
@@ -12,10 +12,11 @@
 
   <div class="card-section">
     <div class="grid-x">
-      <div class="cell auto">
-        <%= form.email_field :email, tabs_id: tabs_id %>
+      <div class="row column">
+        <%= form.email_field :email, tabs_id: tabs_id, class: "recipient-email" %>
       </div>
     </div>
+
     <%= form.hidden_field :id %>
     <%= form.hidden_field :position, value: recipient.position || 0 %>
     <%= form.hidden_field :deleted %>

@@ -2,13 +2,13 @@
 
 require "spec_helper"
 
-describe "Admin manages recipient groups", type: :system do
+describe "AdminRecipientGroups" do
   let(:organization) { create(:organization) }
-  let(:user) { create(:user, :admin, :confirmed, organization: organization) }
-  let(:recipient_group_name) { ::Faker::GreekPhilosophers.quote }
-  let(:recipient_email) { ::Faker::Internet.email }
-  let(:condition_key) { ::Faker::Verb.base }
-  let(:condition_value) { ::Faker::Verb.ing_form }
+  let(:user) { create(:user, :admin, :confirmed, organization:) }
+  let(:recipient_group_name) { Faker::GreekPhilosophers.quote }
+  let(:recipient_email) { Faker::Internet.email }
+  let(:condition_key) { Faker::Verb.base }
+  let(:condition_value) { Faker::Verb.ing_form }
 
   before do
     switch_to_host(organization.host)
@@ -28,18 +28,18 @@ describe "Admin manages recipient groups", type: :system do
           ca: "#{recipient_group_name} ca"
         )
       end
-      click_button "Add recipient"
+      click_on "Add recipient"
       within "label[for^=recipients" do
         fill_in with: recipient_email
       end
-      click_button "Add condition"
+      click_on "Add condition"
       within "label[for$=key]" do
         fill_in with: condition_key
       end
       within "label[for$=value]" do
         fill_in with: condition_value
       end
-      click_button "Add"
+      click_on "Add"
       saved_recipient_group = Decidim::Feedback::RecipientGroup.last
       expect(Decidim::Feedback::RecipientGroup.count).to eq(1)
       expect(saved_recipient_group.name["en"]).to eq("#{recipient_group_name} en")
@@ -52,7 +52,7 @@ describe "Admin manages recipient groups", type: :system do
 
   context "when there is recipient groups" do
     let(:group_amount) { rand(1..6) }
-    let!(:recipient_groups) { create_list(:recipient_group, group_amount, organization: organization) }
+    let!(:recipient_groups) { create_list(:recipient_group, group_amount, organization:) }
 
     before do
       visit current_path
@@ -73,7 +73,7 @@ describe "Admin manages recipient groups", type: :system do
 
       it "can edit group name" do
         fill_in "feedback_recipient_group_name_en", with: "Foo bar"
-        click_button "Save"
+        click_on "Save"
         expect(page).to have_content("Recipient group successfully updated")
         expect(page).to have_content("Foo bar")
       end
@@ -88,7 +88,7 @@ describe "Admin manages recipient groups", type: :system do
       it "deletes recipient group" do
         find(:css, ".action-icon.action-icon--remove", match: :first).click
         expect(page).to have_content("Confirm delete")
-        click_link "OK"
+        click_on "OK"
         expect(page).to have_content("Recipient group successfully deleted")
       end
     end

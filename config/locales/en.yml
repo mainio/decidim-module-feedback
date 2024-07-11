@@ -29,8 +29,10 @@ en:
             total_amount: Total feedback
             unknown_source: Source unknown
         menu:
-          feedbacks: Feedback
+          feedbacks: Feedbacks
           recipient_groups: Recipient groups
+          admin_menu:
+            feedback: Feedback
         models:
           feedbacks:
             fields:
@@ -82,6 +84,8 @@ en:
             success: Recipient group successfully updated.
         titles:
           feedbacks: Feedbacks
+      create:
+        error: Error submitting feedback.
       feedback_details:
         contact_request: I want to be contacted about my feedback
         contact_request_answer_no: "No"
@@ -97,6 +101,14 @@ en:
         show_email: Show email address
         show_resource: Show feedback source
         user_conversations_rejected: User does not want to be contacted on the platform.
+      feedback_inline:
+        rating:
+          1: 1. Very difficult
+          2: 2. Quite difficult
+          3: 3. Neither difficult nor easy
+          4: 4. Quite easy
+          5: 5. Very easy
+        thank_you: Thank you for your feedback!
       feedback_mailer:
         feedback_received:
           intro: A new feedback has been sent at %{organization_name}.

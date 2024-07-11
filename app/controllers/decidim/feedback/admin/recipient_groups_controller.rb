@@ -6,9 +6,11 @@ module Decidim
       class RecipientGroupsController < Decidim::Feedback::Admin::ApplicationController
         include Paginable
 
-        layout "decidim/admin/feedback"
+        layout "decidim/admin/feedbacks"
 
         helper_method :recipient_group, :blank_recipient, :blank_condition
+
+        add_breadcrumb_item_from_menu :admin_feedback_menu
 
         def index
           enforce_permission_to :read, :recipient_group
@@ -23,11 +25,17 @@ module Decidim
           )
         end
 
+        def edit
+          enforce_permission_to(:update, :recipient_group, recipient_group:)
+
+          @form = form(RecipientGroupForm).from_model(recipient_group)
+        end
+
         def create
           enforce_permission_to :create, :recipient_group
           @form = form(RecipientGroupForm).from_params(
             params,
-            current_organization: current_organization
+            current_organization:
           )
 
           AddRecipientGroup.call(@form) do
@@ -43,17 +51,11 @@ module Decidim
           end
         end
 
-        def edit
-          enforce_permission_to :update, :recipient_group, recipient_group: recipient_group
-
-          @form = form(RecipientGroupForm).from_model(recipient_group)
-        end
-
         def update
-          enforce_permission_to :update, :recipient_group, recipient_group: recipient_group
+          enforce_permission_to(:update, :recipient_group, recipient_group:)
           @form = form(RecipientGroupForm).from_params(
             params,
-            current_organization: current_organization
+            current_organization:
           )
 
           UpdateRecipientGroup.call(@form, recipient_group) do
@@ -70,7 +72,7 @@ module Decidim
         end
 
         def destroy
-          enforce_permission_to :destroy, :recipient_group, recipient_group: recipient_group
+          enforce_permission_to(:destroy, :recipient_group, recipient_group:)
           recipient_group.destroy!
 
           flash[:notice] = I18n.t("recipient_groups.destroy.success", scope: "decidim.feedback.admin")

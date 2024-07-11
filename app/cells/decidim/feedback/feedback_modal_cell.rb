@@ -17,7 +17,7 @@ module Decidim
       private
 
       def modal_id
-        options[:modal_id] || "feedback-modal"
+        options[:modal_id] || "feedbackModal"
       end
 
       def decidim_feedback
@@ -29,7 +29,7 @@ module Decidim
           body: "",
           rating: 0,
           contact_request: false,
-          metadata: {},
+          metadata:,
           feedbackable_gid: model ? model.to_sgid.to_s : ""
         )
       end

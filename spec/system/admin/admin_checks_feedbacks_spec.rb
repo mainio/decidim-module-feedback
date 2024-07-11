@@ -2,9 +2,9 @@
 
 require "spec_helper"
 
-describe "Admin checks feedbacks", type: :system do
+describe "AdminFeedbacks" do
   let(:organization) { create(:organization) }
-  let(:user) { create(:user, :admin, :confirmed, organization: organization) }
+  let(:user) { create(:user, :admin, :confirmed, organization:) }
 
   before do
     switch_to_host(organization.host)
@@ -19,7 +19,7 @@ describe "Admin checks feedbacks", type: :system do
   end
 
   context "when there are feedbacks" do
-    let!(:feedbacks) { create_list(:feedback, 3, organization: organization) }
+    let!(:feedbacks) { create_list(:feedback, 3, organization:) }
 
     before do
       visit current_path
@@ -39,18 +39,18 @@ describe "Admin checks feedbacks", type: :system do
   end
 
   context "when there are feedback" do
-    let!(:feedback) { create(:feedback, organization: organization) }
+    let!(:feedback) { create(:feedback, organization:) }
 
     before do
       visit current_path
     end
 
-    it "opens reveal when clicking show" do
+    it "opens modal when clicking show" do
       within ".table-list__actions", match: :first do
         first(:link, "Show").click
       end
 
-      expect(page).to have_css(".reveal__title")
+      expect(page).to have_css("div#feedback#{feedback.id}")
       expect(page).to have_content("Feedback information")
       expect(page).to have_content("Feedback:\n#{feedback.body}")
     end

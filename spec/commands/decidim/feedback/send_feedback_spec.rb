@@ -15,12 +15,12 @@ module Decidim::Feedback
       double(
         invalid?: invalid,
         rating: 1,
-        body: body,
+        body:,
         contact_request: rand(2) == 1,
         metadata: { foo: "bar" },
         feedbackable: resource,
         current_organization: organization,
-        user: user
+        user:
       )
     end
 

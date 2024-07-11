@@ -7,7 +7,7 @@ module Decidim::Feedback::Admin
     subject { described_class.new(form, recipient_group) }
 
     let(:organization) { create(:organization) }
-    let(:recipient_group) { create(:recipient_group, organization: organization) }
+    let(:recipient_group) { create(:recipient_group, organization:) }
     let(:invalid) { false }
     let(:form) do
       double(

@@ -12,7 +12,7 @@ class CreateDecidimFeedbacks < ActiveRecord::Migration[5.2]
       )
       t.integer :rating
       t.text :body, null: false
-      t.boolean :contact_request, default: false
+      t.boolean :contact_request, default: false, null: false
       t.jsonb :metadata
       t.references :decidim_user, null: false
       t.references :decidim_feedbackable, polymorphic: true, index: false

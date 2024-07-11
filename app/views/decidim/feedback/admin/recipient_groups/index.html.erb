@@ -1,62 +1,59 @@
-<div class="card" id="recipient_groups">
-  <div class="card-divider">
-    <h2 class="card-title flex--sbc">
-      <div>
-        <%= t ".title" %>
-      </div>
+<% add_decidim_page_title(t(".title")) %>
 
-      <div class="flex--cc flex-gap--1">
-        <div id="js-other-actions-wrapper">
-          <% if allowed_to? :create, :recipient_group %>
-            <%= link_to t("actions.new_recipient_group", scope: "decidim.feedback.admin"), new_recipient_group_path, class: "button tiny button--simple" %>
-          <% end %>
-        </div>
-      </div>
-    </h2>
-  </div>
-  <div class="card-section">
-    <% if @groups.count > 0 %>
-      <div class="table-scroll">
-        <table class="table-list">
-          <thead>
-            <tr>
-              <th><%= t("models.recipient_groups.fields.name", scope: "decidim.feedback.admin") %></th>
-              <th><%= t("models.recipient_groups.fields.recipients_count", scope: "decidim.feedback.admin") %></th>
-              <th><%= t("models.recipient_groups.fields.metadata_conditions_count", scope: "decidim.feedback.admin") %></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @groups.each do |group| %>
-              <tr>
-                <td>
-                  <% if allowed_to? :update, :recipient_group %>
-                    <%= link_to translated_attribute(group.name), edit_recipient_group_path(group) %><br />
-                  <% else %>
-                    <%= translated_attribute(group.name) %>
-                  <% end %>
-                </td>
-                <td><%= group.recipient_emails.count %></td>
-                <td><%= group.metadata_conditions.count %></td>
-                <td class="table-list__actions">
-                  <% if allowed_to? :update, :recipient_group, recipient_group: group %>
-                    <%= icon_link_to "pencil", edit_recipient_group_path(group), t("actions.configure", scope: "decidim.admin"), class: "action-icon--new" %>
-                  <% end %>
+<div class="item_show__header">
+  <h1 class="item_show__header-title">
+    <%= t ".title" %>
+  </h1>
 
-                  <% if allowed_to? :destroy, :recipient_group, recipient_group: group %>
-                    <%= icon_link_to "circle-x", recipient_group_path(group), t("actions.destroy", scope: "decidim.admin"), method: :delete, class: "action-icon--remove", data: { confirm: t("actions.confirm_destroy", scope: "decidim.admin") } %>
-                  <% end %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-        <%= paginate @groups, theme: "decidim" %>
-      </div>
-    <% else %>
-      <div class="text-center">
-        <%= t ".no_records_html", new_set_link: new_recipient_group_path, button_name: t("decidim.feedback.admin.actions.new_recipient_group") %>
-      </div>
+  <div id="js-other-actions-wrapper" class="flex align-middle gap-x-4 ml-auto">
+    <% if allowed_to? :create, :recipient_group %>
+      <%= link_to t("actions.new_recipient_group", scope: "decidim.feedback.admin"), new_recipient_group_path, class: "button button__sm button__secondary" %>
     <% end %>
   </div>
+</div>
+
+<div class="card-section">
+  <% if @groups.count > 0 %>
+    <div class="table-scroll">
+      <table class="table-list">
+        <thead>
+          <tr>
+            <th><%= t("models.recipient_groups.fields.name", scope: "decidim.feedback.admin") %></th>
+            <th><%= t("models.recipient_groups.fields.recipients_count", scope: "decidim.feedback.admin") %></th>
+            <th><%= t("models.recipient_groups.fields.metadata_conditions_count", scope: "decidim.feedback.admin") %></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @groups.each do |group| %>
+            <tr>
+              <td>
+                <% if allowed_to? :update, :recipient_group %>
+                  <%= link_to translated_attribute(group.name), edit_recipient_group_path(group) %><br />
+                <% else %>
+                  <%= translated_attribute(group.name) %>
+                <% end %>
+              </td>
+              <td><%= group.recipient_emails.count %></td>
+              <td><%= group.metadata_conditions.count %></td>
+              <td class="table-list__actions">
+                <% if allowed_to? :update, :recipient_group, recipient_group: group %>
+                  <%= icon_link_to "pencil-line", edit_recipient_group_path(group), t("actions.configure", scope: "decidim.admin"), class: "action-icon--new" %>
+                <% end %>
+
+                <% if allowed_to? :destroy, :recipient_group, recipient_group: group %>
+                  <%= icon_link_to "delete-bin-line", recipient_group_path(group), t("actions.destroy", scope: "decidim.admin"), method: :delete, class: "action-icon--remove", data: { confirm: t("actions.confirm_destroy", scope: "decidim.admin") } %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @groups, theme: "decidim" %>
+    </div>
+  <% else %>
+    <div class="text-center">
+      <%= t ".no_records_html", new_set_link: new_recipient_group_path, button_name: t("decidim.feedback.admin.actions.new_recipient_group") %>
+    </div>
+  <% end %>
 </div>
