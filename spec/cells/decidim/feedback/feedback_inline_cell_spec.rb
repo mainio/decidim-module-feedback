@@ -53,6 +53,7 @@ module Decidim
           expect(subject.contact_request).to be_falsey
           expect(subject.metadata).to eq({ key: "value" })
           expect(subject.feedbackable_gid).not_to eq("")
+          expect(subject.feedbackable_gid).not_to be_nil
         end
       end
     end
