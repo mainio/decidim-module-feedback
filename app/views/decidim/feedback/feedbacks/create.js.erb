@@ -1,5 +1,12 @@
 (function() {
-  var $modal = $("#feedback-modal");
-  $(".feedback-form", $modal).addClass("hide");
-  $(".feedback-success", $modal).removeClass("hide");
+  var $target = null;
+
+  <% if @feedback_type == "inline" %>
+    $target = $("[data-feedback-inline]");
+  <% else %>
+    $target = $("#feedback-modal");
+  <% end %>
+
+  $(".feedback-form", $target).addClass("hide");
+  $(".feedback-success", $target).removeClass("hide");
 })();

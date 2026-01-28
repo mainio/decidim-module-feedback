@@ -35,8 +35,8 @@ module Decidim
       def create_feedback!
         @feedback = Decidim::Feedback::Feedback.create!(
           rating: form.rating,
-          body: form.body,
-          contact_request: form.contact_request,
+          body: form.try(:body) || "",
+          contact_request: form.try(:contact_request) || false,
           metadata: form.metadata,
           feedbackable: form.feedbackable,
           organization: form.current_organization,

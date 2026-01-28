@@ -82,6 +82,8 @@ fi:
             success: Vastaanottajaryhmän päivitys onnistui.
         titles:
           feedbacks: Palautteet
+      create:
+        error: Palautteen antaminen epäonnistui.
       feedback_details:
         contact_request: Haluan, että minuun ollaan yhteydessä palautteestani
         contact_request_answer_no: "En"
@@ -97,6 +99,14 @@ fi:
         show_email: Näytä sähköpostiosoite
         show_resource: Näytä palautelähde
         user_conversations_rejected: Käyttäjä ei halua yhteydenottoja alustalla.
+      feedback_inline:
+        rating:
+          1: 1. Hyvin vaikeaa
+          2: 2. Melko vaikeaa
+          3: 3. Ei vaikeaa eikä helppoa
+          4: 4. Melko helppoa
+          5: 5. Hyvin helppoa
+        thank_you: Kiitos palautteestasi!
       feedback_mailer:
         feedback_received:
           intro: Uusi palaute on lähetetty palvelussa %{organization_name}.

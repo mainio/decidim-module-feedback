@@ -35,7 +35,12 @@ module Decidim
       def resource_link
         return unless model.feedbackable
 
-        @resource_link ||= Decidim::ResourceLocatorPresenter.new(model.feedbackable).url
+        @resource_link ||=
+          if model.feedbackable.is_a?(Decidim::Component)
+            EngineRouter.main_proxy(model.feedbackable).root_path
+          else
+            Decidim::ResourceLocatorPresenter.new(model.feedbackable).url
+          end
       end
 
       def conversation_link
