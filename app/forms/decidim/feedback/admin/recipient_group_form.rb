@@ -10,8 +10,8 @@ module Decidim
         mimic :feedback_recipient_group
 
         translatable_attribute :name, String
-        attribute :recipients, Array[Decidim::Feedback::Admin::RecipientForm]
-        attribute :conditions, Array[Decidim::Feedback::Admin::ConditionForm]
+        attribute :recipients, [Decidim::Feedback::Admin::RecipientForm]
+        attribute :conditions, [Decidim::Feedback::Admin::ConditionForm]
 
         validates :name, translatable_presence: true
         validates :recipient_emails, presence: true

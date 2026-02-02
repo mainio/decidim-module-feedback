@@ -35,7 +35,7 @@ module Decidim
         end
 
         def allowed_recipient_group_action?
-          return unless permission_action.subject == :recipient_group
+          return false unless permission_action.subject == :recipient_group
 
           case permission_action.action
           when :create, :read
@@ -46,7 +46,7 @@ module Decidim
         end
 
         def allowed_feedback_action?
-          return unless permission_action.subject == :feedback
+          return false unless permission_action.subject == :feedback
 
           case permission_action.action
           when :create, :read, :export

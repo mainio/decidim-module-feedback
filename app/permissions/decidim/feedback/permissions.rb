@@ -15,7 +15,7 @@ module Decidim
       private
 
       def feedback_action?
-        return unless permission_action.subject == :feedback
+        return false unless permission_action.subject == :feedback
 
         allow! if permission_action.action == :create
       end

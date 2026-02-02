@@ -12,7 +12,7 @@ module Decidim
       let(:feedback_body) { ::Faker::Lorem.sentence }
       let(:rating) { rand(6) }
       let(:contact_request) { rand(2) }
-      let(:params) { { "rating" => rating, "body" => feedback_body, "contact_request" => contact_request, feedbackable_gid: dummy_resource.to_sgid.to_s } }
+      let(:params) { { "rating" => rating, "body" => feedback_body, "contact_request" => contact_request, :feedbackable_gid => dummy_resource.to_sgid.to_s } }
       let(:dummy_resource) { create(:dummy_resource) }
 
       before do
