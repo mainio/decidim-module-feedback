@@ -1,6 +1,7 @@
 .feedback-form{
   input[type="checkbox"]:focus{
     @apply outline;
+
     outline: 2px solid #007293;
     outline-color: var(--highlight);
   }
@@ -10,12 +11,13 @@
 
     .rating-stars{
       @apply mb-4 text-left;
+
       unicode-bidi: bidi-override;
       direction: rtl;
 
-
       &:focus{
         @apply outline;
+
         outline: 2px solid #007293;
         outline-color: var(--highlight);
       }
@@ -29,14 +31,13 @@
           + .rating-value svg,
           ~ .rating-value svg{
             fill: #f5da4e;
-
-
           }
         }
 
         &:focus{
           + .rating-value{
             @apply outline;
+
             outline: 2px solid #007293;
             outline-color: var(--highlight);
           }
@@ -55,15 +56,11 @@
           svg,
           ~ .rating-value svg{
             fill: #f5da4e;
-
-
           }
         }
 
         svg{
           fill: none;
-
-
         }
       }
     }
