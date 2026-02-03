@@ -26,7 +26,6 @@
         // Leave the input visible for screen readers
         @apply absolute opacity-0;
 
-
         &:checked{
           + .rating-value svg,
           ~ .rating-value svg{
