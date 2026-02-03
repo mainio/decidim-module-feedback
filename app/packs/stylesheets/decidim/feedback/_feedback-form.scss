@@ -1,44 +1,43 @@
-$rating-star-color: #f5da4e !default;
-$feedback-outline-color: #007293 !default;
-$feedback-outline: 2px solid $feedback-outline-color !default;
-
 .feedback-form{
   input[type="checkbox"]:focus{
-    outline: $feedback-outline;
+    @apply outline;
+    outline: 2px solid #007293;
     outline-color: var(--highlight);
   }
 
   .rating-field{
-    margin-bottom: 2rem;
+    @apply mb-8 flex flex-col items-center;
 
     .rating-stars{
-      margin-bottom: 1rem;
+      @apply mb-4 text-left;
       unicode-bidi: bidi-override;
       direction: rtl;
-      text-align: left;
+
 
       &:focus{
-        outline: $feedback-outline;
+        @apply outline;
+        outline: 2px solid #007293;
         outline-color: var(--highlight);
       }
 
       input{
         // Leave the input visible for screen readers
-        position: absolute;
-        opacity: 0;
+        @apply absolute opacity-0;
+
 
         &:checked{
-          + .rating-value,
-          ~ .rating-value .rating-value-star{
-            svg{
-              fill: $rating-star-color;
-            }
+          + .rating-value svg,
+          ~ .rating-value svg{
+            fill: #f5da4e;
+
+
           }
         }
 
         &:focus{
           + .rating-value{
-            outline: $feedback-outline;
+            @apply outline;
+            outline: 2px solid #007293;
             outline-color: var(--highlight);
           }
         }
@@ -49,25 +48,37 @@ $feedback-outline: 2px solid $feedback-outline-color !default;
       }
 
       .rating-value{
-        display: inline-block;
+        @apply inline-block cursor-pointer;
 
         &:hover,
         &:focus{
-          .rating-value-star,
-          ~ .rating-value .rating-value-star{
-            svg{
-              fill: $rating-star-color;
-            }
+          svg,
+          ~ .rating-value svg{
+            fill: #f5da4e;
+
+
           }
         }
 
-        .rating-value-star{
-          svg{
-            fill: none;
-          }
+        svg{
+          fill: none;
+
+
         }
       }
     }
+  }
+
+  .feedback-field{
+    @apply flex flex-col items-center;
+
+    textarea{
+      @apply w-full;
+    }
+  }
+
+  .checkbox-field{
+    @apply text-center;
   }
 }
 
