@@ -43,10 +43,17 @@ module Decidim
       def serialize_source
         return { name: nil, id: nil, link: nil } unless feedback.feedbackable
 
+        source_link =
+          begin
+            Decidim::ResourceLocatorPresenter.new(feedback.feedbackable).url
+          rescue NoMethodError
+            # This can happen e.g. for components
+          end
+
         {
           name: feedback.feedbackable.class.model_name.human(count: 2),
           id: feedback.feedbackable.id,
-          link: Decidim::ResourceLocatorPresenter.new(feedback.feedbackable).url
+          link: source_link
         }
       end
 
