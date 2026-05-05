@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 def generate_metadata_conditions
-  array = []
-  rand(1..6).times.each do |_i|
-    array << Array.new(2) { Faker::Verb.base }
-  end
-  array.to_h
+  rand(1..6).times.to_h { Array.new(2) { Faker::Verb.base } }
 end
 
 FactoryBot.define do
