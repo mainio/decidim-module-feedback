@@ -4,6 +4,8 @@ module Decidim
   module Feedback
     module Admin
       class ExportJob < ApplicationJob
+        include Decidim::PrivateDownloadHelper
+
         queue_as :default
 
         def perform(user, organization, name, format)
@@ -12,7 +14,9 @@ module Decidim
             FeedbackSerializer
           ).export
 
-          ExportMailer.export(user, name, export_data).deliver_now
+          private_export = attach_archive(export_data, name, user)
+
+          ExportMailer.export(user, private_export).deliver_now
         end
       end
     end

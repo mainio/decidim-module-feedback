@@ -11,10 +11,7 @@ describe Decidim::Feedback::Admin::ExportJob do
 
     email = last_email
     expect(email.subject).to include("feedbacks")
-    attachment = email.attachments.first
-
-    expect(attachment.read.length).to be_positive
-    expect(attachment.mime_type).to eq("application/zip")
-    expect(attachment.filename).to match(/^feedbacks-[0-9]+-[0-9]+-[0-9]+-[0-9]+\.zip$/)
+    expect(email.body.encoded).to include("download_your_data")
+    expect(email.body.encoded).to include("Your download is ready")
   end
 end
