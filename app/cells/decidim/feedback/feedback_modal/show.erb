@@ -15,7 +15,6 @@
             <%= f.send(:required_for_attribute, :rating) %>
           </label>
           <%# = f.radio_button :rating, 0, label: false, class: "rating-value-initial" %>
-          <%= f.hidden_field :rating %>
           <div class="rating-stars" role="radiogroup" aria-labelledby="<%= modal_id %>-stars-label">
             <% [5, 4, 3, 2, 1].each do |rating| %>
               <%= f.radio_button :rating, rating, label: false, "aria-label": I18n.t("decidim.feedback.feedback_modal.rating_value", value: rating), tabindex: 0 %>
