@@ -23,7 +23,7 @@
       }
 
       input{
-        // Leave the input visible for screen readers
+        /* Leave the input visible for screen readers */
         @apply absolute opacity-0;
 
         &:checked{
