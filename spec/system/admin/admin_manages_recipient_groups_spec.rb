@@ -68,7 +68,7 @@ describe "AdminRecipientGroups" do
 
     describe "#edit" do
       before do
-        find(:css, ".action-icon.action-icon--new", match: :first).click
+        find(:css, ".action-icon--new", match: :first).click
       end
 
       it "can edit group name" do
@@ -81,12 +81,14 @@ describe "AdminRecipientGroups" do
 
     describe "#delete" do
       it "reveals confirmation" do
-        find(:css, ".action-icon.action-icon--remove", match: :first).click
+        find(:css, ".action-icon--remove", match: :first).click
+
         expect(page).to have_content("Confirm delete")
       end
 
       it "deletes recipient group" do
-        find(:css, ".action-icon.action-icon--remove", match: :first).click
+        find(:css, ".action-icon--remove", match: :first).click
+
         expect(page).to have_content("Confirm delete")
         click_on "OK"
         expect(page).to have_content("Recipient group successfully deleted")
