@@ -1,54 +1,64 @@
-$(() => {
-  const $modal = $("#feedbackModal");
-  const $form = $(".feedback-form", $modal);
-  // const $cancelConfirm = $(".cancel-confirm", $modal);
-  const $rating = $(".rating-field", $form);
+document.addEventListener("turbo:load", () => {
+  const modal = document.getElementById("feedbackModal");
+  const form = modal?.querySelector(".feedback-form");
+  const rating = form?.querySelector(".rating-field");
+
+  if (!modal || !form || !rating) {
+    return
+  };
 
   const validateRating = () => {
-    const ratingValue = parseInt($("input:checked", $rating).val(), 10);
-    if (!ratingValue || ratingValue === 0) {
-      $("label", $rating).addClass("is-invalid-label");
-      $(".form-error-general", $rating).addClass("is-visible");
-      $form.data("form-valid", false);
+    const checked = rating.querySelector("input:checked");
+    const ratingValue = checked
+      ? parseInt(checked.value, 10)
+      : 0;
+
+    const label = rating.querySelector("label");
+    const error = rating.querySelector(".form-error-general");
+
+    if (ratingValue) {
+      label?.classList.remove("is-invalid-label");
+      error?.classList.remove("is-visible");
     } else {
-      $("label", $rating).removeClass("is-invalid-label");
-      $(".form-error-general", $rating).removeClass("is-visible");
+      label?.classList.add("is-invalid-label");
+      error?.classList.add("is-visible");
+      form.dataset.formValid = "false";
     }
   };
 
-  window.Decidim.currentDialogs.feedbackModal.open()
-
-  $form.data("form-valid", false);
-
-  // $(".cancel-feedback", $modal).on("click.decidim-feedback", (ev) => {
-  //   ev.preventDefault();
-  //   $form.addClass("hide");
-  //   $cancelConfirm.removeClass("hide");
-  // });
-  // $(".cancel-feedback-discard", $modal).on("click.decidim-feedback", (ev) => {
-  //   ev.preventDefault();
-  //   $form.removeClass("hide");
-  //   $cancelConfirm.addClass("hide");
-  //   $("input[type='radio']:first", $rating).focus();
-  // });
-
-  if ($rating.length > 0) {
-    $("input", $rating).on("change", validateRating);
+  const openFeedbackModal = (attemptsLeft = 20) => {
+    const dialog = window.Decidim?.currentDialogs?.feedbackModal;
+    if (dialog) {
+      dialog.open();
+    } else if (attemptsLeft > 0) {
+      requestAnimationFrame(() => openFeedbackModal(attemptsLeft - 1));
+    } else {
+      return;
+    }
   }
 
-  $form.on("formvalid.zf.abide", () => {
-    $form.data("form-valid", true);
-    validateRating();
-  });
-  $form.on("forminvalid.zf.abide", () => {
-    $form.data("form-valid", false);
-    validateRating();
-  });
+  openFeedbackModal();
 
-  $form.on("submit.decidim-feedback", () => {
-    if ($form.data("form-valid")) {
-      $(".feedback-form").addClass("hidden");
-      $(".feedback-success").removeClass("hidden");
+  form.dataset.formValid = "false";
+
+  rating.querySelectorAll("input").forEach((input) => {
+    input.addEventListener("change", validateRating);
+  })
+
+  form.addEventListener("formvalid.formvalidator", () => {
+    form.dataset.formValid = "true";
+    validateRating();
+  })
+
+  form.addEventListener("forminvalid.formvalidator", () => {
+    form.dataset.formValid = "false";
+    validateRating();
+  })
+
+  form.addEventListener("submit", () => {
+    if (form.dataset.formValid === "true") {
+      form.classList.add("hidden");
+      modal.querySelector(".feedback-success")?.classList.remove("hidden");
     }
-  });
+  })
 });
