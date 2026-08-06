@@ -1,8 +1,11 @@
-<span class="exports button button__sm button__secondary button--simple" data-toggle="export-dropdown"><%= t "actions.export", scope: "decidim.admin" %></span>
-<div class="dropdown-pane" id="export-dropdown" data-dropdown data-position=bottom data-alignment=right data-auto-focus="true" data-close-on-click="true">
-  <ul class="vertical menu add-components">
+<div class="relative">
+  <button class="exports button button__sm button__secondary button--simple" data-controller="dropdown" data-target="export-dropdown"><%= t "actions.export", scope: "decidim.admin" %></button>
+
+  <ul class="dropdown dropdown__bottom" id="export-dropdown" aria-hidden="true">
     <% %w{CSV JSON Excel}.each do |format| %>
-      <li class="exports--format--<%= format.downcase %> exports--feedbacks"><%= link_to t("decidim.admin.exports.export_as", name: t("decidim.feedback.admin.titles.feedbacks"), export_format: format.upcase), export_feedbacks_path(format: format), method: :post %></li>
+      <li class="exports--format--<%= format.downcase %> exports--feedbacks dropdown__item">
+        <%= link_to t("decidim.admin.exports.export_as", name: t("decidim.feedback.admin.titles.feedbacks"), export_format: format.upcase), export_feedbacks_path(format: format), method: :post, class: "dropdown__button" %>
+      </li>
     <% end %>
   </ul>
 </div>
