@@ -30,7 +30,7 @@ module Decidim
           end
 
           on(:invalid) do
-            render json: { error: I18n.t("create.error", scope: "decidim.feedback") }, status: :unprocessable_entity
+            render json: { error: I18n.t("create.error", scope: "decidim.feedback") }, status: :unprocessable_content
           end
         end
       end

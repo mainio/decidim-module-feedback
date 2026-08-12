@@ -30,8 +30,8 @@ module Decidim::Feedback
       context "when sender doesnt want to be contacted" do
         let(:feedback) { create(:feedback, :no_contact, organization:) }
 
-        it "doesnt have reply_to email" do
-          expect(mail.reply_to).to be_nil
+        it "uses the default mailer sender as reply_to" do
+          expect(mail.reply_to).not_to eq([feedback.user.email])
         end
       end
     end
