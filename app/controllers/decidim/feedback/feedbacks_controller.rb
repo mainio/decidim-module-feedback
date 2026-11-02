@@ -35,6 +35,14 @@ module Decidim
         end
       end
 
+      def ensure_js_format!
+        raise NotImplementedError if request.format != :js
+      end
+
+      private
+
+      attr_reader :types, :button_options
+
       def permission_scope
         :public
       end
@@ -45,14 +53,6 @@ module Decidim
           ::Decidim::Permissions
         ]
       end
-
-      def ensure_js_format!
-        raise NotImplementedError if request.format != :js
-      end
-
-      private
-
-      attr_reader :types, :button_options
     end
   end
 end
