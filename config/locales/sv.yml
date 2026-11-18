@@ -5,7 +5,7 @@ sv:
         key: Nyckel
         value: Värde
       feedback_recipient:
-        email: Mottagarens e-mail
+        email: Mottagarens e-postadress
       feedback_recipient_group:
         name: Namn
   decidim:
@@ -92,7 +92,7 @@ sv:
         contact_request_answer_yes: "Ja"
         feedback_body: Feedback
         feedback_metadata: "Feedback kategorisering"
-        feedback_rating: Feedback betyg
+        feedback_rating: Feedback betyg (1-5)
         feedback_resource: Feedback källa
         feedback_resource_id: ID
         sender_email: Avsändarens e-post

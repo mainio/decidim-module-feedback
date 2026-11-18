@@ -1,0 +1,135 @@
+cs:
+  activemodel:
+    attributes:
+      feedback_condition:
+        key: Klíč
+        value: Hodnota
+      feedback_recipient:
+        email: E-mailová adresa příjemce
+      feedback_recipient_group:
+        name: Název
+  decidim:
+    feedback:
+      admin:
+        actions:
+          back: Zpět
+          destroy: Odebrat
+          new_recipient_group: Nová skupina příjemců
+          show: Zobrazit
+        feedback_info:
+          close_modal: Zavřít okno
+          title: Informace o zpětné vazbě
+        feedbacks:
+          index:
+            average_rating: Průměr hodnocení
+            deleted_user: Odstraněný uživatel
+            no_records_html: <p>Zatím žádná zpětná vazba.</p>
+            show_email: Zobrazit e-mailovou adresu
+            title: Zpětná vazba
+            total_amount: Celková zpětná vazba
+            unknown_source: Neznámý zdroj
+        menu:
+          feedbacks: Připomínky
+          recipient_groups: Skupiny příjemců
+          admin_menu:
+            feedback: Zpětná vazba
+        models:
+          feedbacks:
+            fields:
+              body: Text
+              contact_request: Žádost o přátelství
+              rating: Hodnocení
+              sender: Odesílatel
+              sent_at: Odesláno v
+              source: Zdroj
+              source_id: ID zdroje
+            values:
+              contact_request:
+                "yes": "Ano"
+                "no": "Ne"
+          recipient_groups:
+            fields:
+              name: Název
+              metadata_conditions_count: Počet podmínek omezení
+              recipients_count: Počet příjemců
+        recipient_groups:
+          condition:
+            condition: Podmínka
+            remove: Odebrat
+          create:
+            error: Chyba při vytváření skupiny příjemců.
+            success: Skupina příjemců byla úspěšně vytvořena.
+          destroy:
+            success: Skupina příjemců byla úspěšně odstraněna.
+          edit:
+            save: Uložit
+            title: Upravit skupinu příjemců
+          form:
+            add_condition: Přidat podmínku
+            add_recipient: Přidat příjemce
+            conditions: Omezení
+            conditions_explanation: Omezení umožňují určit, která zpětná vazba je odeslána do této skupiny příjemců na základě metadat zpětné vazby. Pokud chcete, aby tato skupina obdržela veškerou zpětnou vazbu, nechte omezení prázdná.
+            recipients: Příjemci
+          index:
+            no_records_html: <p>Žádné skupiny příjemců.</p><p>Začněte přidáním skupiny příjemců pomocí tlačítka "<a href="%{new_set_link}">%{button_name}</a>".</p>
+            title: Skupiny příjemců
+          new:
+            add: Přidat
+            title: Přidat skupinu příjemců
+          recipient:
+            recipient: Příjemce
+            remove: Odebrat
+          update:
+            error: Chyba při aktualizaci skupiny příjemců.
+            success: Skupina příjemců byla úspěšně aktualizována.
+        titles:
+          feedbacks: Zpětné vazby
+      create:
+        error: Chyba při odesílání zpětné vazby.
+      feedback_details:
+        contact_request: Chci být kontaktován o mé zpětné vazbě
+        contact_request_answer_no: "Ne"
+        contact_request_answer_yes: "Ano"
+        feedback_body: Zpětná vazba
+        feedback_metadata: "Kategorizace zpětné vazby"
+        feedback_rating: Hodnocení (1 - 5)
+        feedback_resource: Zdroj zpětné vazby
+        feedback_resource_id: ID
+        sender_email: E-mail odesílatele
+        sender_name: Jméno odesílatele
+        sent_at: Odesláno v
+        show_email: Zobrazit e-mailovou adresu
+        show_resource: Zobrazit zdroj zpětné vazby
+        user_conversations_rejected: Uživatel nechce být kontaktován na platformě.
+      feedback_inline:
+        rating:
+          1: 1. Obtížné
+          2: 2. Velmi obtížné
+          3: 3. Ani obtížné, ani snadné
+          4: 4. Snadné
+          5: 5. Velmi snadné
+        thank_you: Děkujeme za váš názor!
+      feedback_mailer:
+        feedback_received:
+          intro: Nová zpětná vazba byla odeslána v %{organization_name}.
+          outro: Obdrželi jste toto oznámení, protože jste administrátor u %{organization_name}.
+          subject: Zpětná vazba od %{organization_name}
+      feedback_modal:
+        body_label: Řekněte nám více o své zkušenosti
+        cancel: Nechci zanechat zpětnou vazbu
+        cancel_confirm: Opravdu nechcete zanechat zpětnou vazbu? Vaše zpětná vazba je pro nás velmi cenná a důležitá.
+        cancel_confirm_no: Změnil jsem názor a chci zanechat zpětnou vazbu
+        cancel_confirm_yes: Nechci zanechat zpětnou vazbu
+        close_modal: Zavřít okno
+        contact_request_label: Chci být kontaktován o mé zpětné vazbě
+        rating_label: Dejte zpětnou vazbu k vašim zkušenostem
+        rating_required: Musíte dát hodnocení
+        rating_value: Ohodnoťte svou zkušenost na stupnici od 1 do 5 s hodnocením %{value}.
+        send: Odeslat zpětnou vazbu
+        thank_you: Děkujeme za váš názor!
+        title: Zanechte zpětnou vazbu k vašim zkušenostem
+  layouts:
+    decidim:
+      admin:
+        feedback:
+          title: Zpětná vazba
